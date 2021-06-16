@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block seo %}
+  {{ super() }}
+
+  {% if section.title and config.title %}
+    {% set title = section.title ~ title_separator ~ config.title %}
+  {% elif page.title %}
+    {% set title = section.title %}
+  {% else %}
+    {% set title = config.title %}
+  {% endif %}
+
+  {% if section.description %}
+    {% set description = section.description %}
+  {% else %}
+    {% set description = config.description %}
+  {% endif %}
+
+  {{ macros_head::seo(title=title, description=description) }}
+{% endblock %}
+
+{% block content %}
+{% endblock content %}

@@ -1,0 +1,44 @@
+{% import 'macros/search.html' as macros_search %}
+{% import 'macros/head.html' as macros_head %}
+{% import 'macros/header.html' as macros_header %}
+{% import 'macros/footer.html' as macros_footer %}
+
+<!DOCTYPE html>
+<html
+  lang="{{ config.extra.language_code | default(value="en") }}"
+  data-theme="{{ config.extra.theme | default(value="light") }}">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no,viewport-fit=cover">
+    {{ macros_head::favicons(emoji="👻") }}
+    {{ macros_head::stylesheet() }}
+
+    {% block seo %}
+      {% if config.extra.title_separator %}
+        {% set title_separator = " " ~ config.extra.title_separator ~ " " %}
+      {% else %}
+        {% set title_separator = " | " %}
+      {% endif %}
+    {% endblock seo %}
+  </head>
+
+  <body class="relative w-full h-full flex flex-col overflow-x-hidden min-h-screen">
+    {% block header %}
+      {{ macros_header::header(current_section=current_path) }}
+    {% endblock header %}
+
+    <main class="relative w-full flex flex-1 flex-col max-w-screen-lg mx-auto px-6 sm:px-12" role="main">
+      {% block content %}{% endblock content %}
+    </main>
+
+    {% block footer %}
+      {{ macros_footer::footer(current_section=current_path) }}
+    {% endblock footer %}
+
+    {{ macros_search::inject() }}
+
+  </body>
+</html>

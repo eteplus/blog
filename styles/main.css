@@ -1,0 +1,18 @@
+@import "tailwind.css";
+@import "theme.css";
+@import "header.css";
+@import "post.css";
+
+@layer base {
+  h1, h2, h3 {
+    @apply font-medium;
+  }
+
+  body {
+    @apply font-serif;
+
+    transition: color .2s, background-color .2s;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+  }
+}

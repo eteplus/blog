@@ -1,0 +1,23 @@
+{% macro header(current_section) %}
+<header class="relative w-full" role="banner">
+  <div class="relative max-w-screen-lg px-6 sm:px-12 py-4 sm:py-8 mx-auto flex flex-col sm:flex-row flex-wrap items-center justify-between">
+    <div class="flex items-center text-lg">
+      {# <img class="block w-10 h-10 rounded-full mr-2" src="https://avatars.githubusercontent.com/u/9312677" alt="{{ config.extra.author }}"> #}
+      {% set author = "<" ~ config.extra.author ~ " />" %}
+      <a class="font-semibold cursor-pointer" href="{{ config.base_url | safe }}">{{ author | upper }}</a>
+    </div>
+    <div class="menu relative w-auto flex items-center text-center">
+      <nav>
+        <ul>
+          {% for item in config.extra.menus %}
+          <li class="inline-block focus:outline-none">
+            <!-- prettier-ignore -->
+            <a class="{% if item.url == current_section  %} active {% elif item.url != '/' and item.url in current_section %} active {% else %} {% endif %}" href="{{ item.url | safe }}">{{ item.name }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+{% endmacro %}

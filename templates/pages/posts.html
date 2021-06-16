@@ -1,0 +1,72 @@
+{% extends "section.html" %}
+
+{% block content %}
+  {% if paginator %}
+    {% set posts = paginator.pages %}
+  {% else %}
+    {% set posts = section.pages %}
+  {% endif %}
+  <h1 class="text-3xl md:text-5xl text-left sm:text-center py-8 sm:py-16">{{ section.title }}</h1>
+  <div class="relative mx-auto max-w-screen-md flex flex-wrap">
+    {% for post in posts %}
+      <article class="relative w-full flex flex-col md:flex-row mb-12 sm:mb-16
+       {% if not post.extra.cover %} min-h-auto {% endif %}">
+
+        {% if post.extra.cover %}
+          <a class="flex flex-1 mb-4 md:mb-0 md:mr-8" href="{{ post.permalink }}" alt="{{ post.title }}">
+            <img class="block w-full h-full rounded-lg object-cover" src="{{ get_url(path=post.extra.cover) }}" />
+          </a>
+        {% endif %}
+
+        <div class="relative w-full flex flex-2 flex-col">
+          {# title #}
+          <a class="text-2xl text-left text-theme-primary mb-4" href="{{ post.permalink }}" alt="{{ post.title }}" rel="bookmark">
+            <h2>{{ post.title }}</h2>
+          </a>
+          {# meta #}
+          <div class="flex justify-start items-center flex-wrap text-lg mb-4 text-theme-text-offset">
+            <span>{{ post.date | date(format='%b %d, %Y') }}</span>
+            {% if post.reading_time %}
+              <span class="mx-2 opacity-50">|</span>
+              <span>{{ post.reading_time }} minute read</span>
+            {% endif %}
+            {% if post.taxonomies.tags %}
+              <span class="mx-2 opacity-50">|</span>
+              <div class="flex items-center">
+                {% for tag in post.taxonomies.tags %}
+                  <a
+                    href="{{ get_taxonomy_url(kind='tags', name=tag) }}"
+                    class="lowercase underline hover:text-theme-primary"
+                    alt="{{ tag }}"
+                  >{{ tag }}</a>
+                  {% if not loop.last %}
+                    <span class="mx-2">•</span>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+          {# summary #}
+          {% if post.summary %}
+            <div class="text-base sm:text-lg text-theme-text break-words">{{ post.summary | safe }}</div>
+          {% elif post.description %}
+            <p class="text-base sm:text-lg text-theme-text break-words">{{ post.description | safe }}</p>
+          {% endif %}
+        </div>
+      </article>
+    {% endfor %}
+
+    {# paginator #}
+    <div class="text-base pb-8">
+      {% if paginator.previous %}
+        <a class="text-theme-primary no-underline" href="{{ paginator.previous }}" alt="Previous">«&nbsp;Previous</a>
+        <span class="mx-2">|</span>
+      {% endif %}
+      <span class="text-theme-text">Page {{ paginator.current_index }} of {{ paginator.number_pagers }}</span>
+      {% if paginator.next %}
+        <span class="mx-2">|</span>
+        <a class="text-theme-primary no-underline" href="{{ paginator.next }}" alt="Next">Next&nbsp;»</a>
+      {% endif %}
+    </div>
+  </div>
+{% endblock content %}

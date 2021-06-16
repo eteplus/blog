@@ -1,0 +1,24 @@
+.menu a {
+  @apply relative p-4 inline-block align-baseline focus:outline-none;
+
+  &.active:before {
+    background-color: var(--color-primary);
+    transition: none;
+    right: 0.75rem;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    right: 100%;
+    bottom: 6px;
+    left: 0.75rem;
+    height: 4px;
+    background-color: var(--color-border);
+    transition: all 0.35s ease-in-out;
+  }
+
+  &:hover:before {
+    right: 0.75rem;
+  }
+}

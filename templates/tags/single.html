@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block seo %}
+  {{ super() }}
+
+  {% if term.name and config.title %}
+    {% set title = term.name ~ title_separator ~ config.title %}
+  {% elif term.name %}
+    {% set title = term.name %}
+  {% else %}
+    {% set title = config.title %}
+  {% endif %}
+
+  {{ macros_head::seo(
+    title=title,
+    description=config.description) }}
+{% endblock %}
+
+{% block content %}
+  <h1 class="page-title">{{ "Articles in the " ~ term.name ~ " tag" }}</h1>
+  <div class="tags-expo">
+    <div class="tags-expo-section">
+        <h2 id="{{ term.name }}">{{ term.name }}</h2>
+        <ul class="tags-expo-posts">
+            {% for post in term.pages %}
+            <a class="post-title" href="{{ post.permalink }}">
+                <li>
+                    {{ post.title }}
+                    <small class="post-date">{{ post.date | date(format="%d %B %Y") }}</small>
+                </li>
+            </a>
+            {% endfor %}
+        </ul>
+    </div>
+  </div>
+{% endblock content %}

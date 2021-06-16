@@ -1,0 +1,7 @@
+{% macro inject() %}
+{% if config.build_search_index %}
+  <script src="{{ get_url(path="elasticlunr.min.js") | safe }}" defer></script>
+  <script src="{{ get_url(path="search_index." ~ config.default_language ~ ".js") | safe }}" defer></script>
+  <script src="{{ get_url(path="js/search.js") | safe }}" defer></script>
+{% endif %}
+{% endmacro %}

@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block seo %}
+  {{ super() }}
+
+  {% if page.title and config.title %}
+    {% set title = page.title ~ title_separator ~ config.title %}
+  {% elif page.title %}
+    {% set title = page.title %}
+  {% else %}
+    {% set title = config.title %}
+  {% endif %}
+
+  {% if page.description %}
+    {% set description = page.description %}
+  {% else %}
+    {% set description = config.description %}
+  {% endif %}
+
+  {{ macros_head::seo(
+    title=title,
+    description=description,
+    type="article",
+    created_time=page.date,
+    updated_time = page.updated) }}
+{% endblock %}
+
+{% block content %}
+  <div class="post" role="document">
+
+    <div class="post__header">
+      <h1 class="post__title">{{ page.title | safe }}</h1>
+      <div class="post__meta">
+        <span class="post__date">{{ page.date | date(format='%Y-%m-%d') }}</span>
+        {% if page.taxonomies.tags %}
+          {% for tag in page.taxonomies.tags %}
+            <span class="post__tag">{{ tag }}</span>
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+
+    {% if page.extra.cover %}
+      <div class="post__hero" style="background-image: url({{ get_url(path=page.extra.cover) }});"></div>
+    {% endif %}
+
+    {% if page.description %}
+      <p class="post__descripiton">{{ page.description }}</p>
+    {% endif %}
+
+    <div class="post__content">
+      {{ page.content | markdown(inline=true) | safe }}
+    </div>
+  </div>
+  <div class="related">
+    <h2>Other Posts</h2>
+    <ul class="related-posts">
+      <li class="previous">
+      {% if page.earlier %}
+        <small>Earlier {</small>
+        <a href="{{ page.earlier.permalink }}">{{ page.earlier.title }}</a>
+        <small>}</small>
+      {% endif %}
+      </li>
+      <li class="next">
+      {% if page.later %}
+        <small>{</small>
+        <a href="{{ page.later.permalink }}">{{ page.later.title }}</a>
+          <small>} Later</small>
+      {% endif %}
+      </li>
+    </ul>
+  </div>
+  <div class="flex flex-col max-w-screen-lg mx-auto">
+  </div>
+{% endblock content %}

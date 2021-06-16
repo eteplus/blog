@@ -1,0 +1,75 @@
+{% macro stylesheet() %}
+<link rel="stylesheet" href="/css/main.css" />
+{% endmacro %}
+
+{% macro favicons(emoji="👻") %}
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>{{ emoji | default(value = "👻") }}</text></svg>">
+{% endmacro %}
+
+{% macro seo(
+    title="",
+    description="",
+    type="website",
+    is_404=false,
+    created_time="2021-06-01T08:08:00+08:00",
+    updated_time="2021-06-01T08:08:08+08:00"
+  )
+%}
+  {% if is_404 %}
+    <meta name="robots" content="noindex, follow">
+  {% else %}
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  {% endif %}
+
+  {% if current_url %}
+	  {% set page_url = current_url %}
+  {% else %}
+    {% set page_url = get_url(path="404.html") %}
+  {% endif %}
+
+  {% if current_path %}
+    {% set page_path = current_path %}
+  {% else %}
+    {% set page_path = "/404.html" %}
+  {% endif %}
+
+  <title>{{ title }}</title>
+  <meta name="description" content="{{ description }}">
+  <link rel="canonical" href="{{ page_url | safe }}">
+  <meta property="og:title" content="{{ title }}">
+  <meta property="og:description" content="{{ description }}">
+  <meta property="og:type" content="{{ type }}">
+  <meta property="og:url" content="{{ page_url | safe }}">
+  <!-- og:image -->
+  {% if page.extra.images %}
+    {% for image in page.extra.images %}
+      <meta property="og:image" content="{{ get_url(path=image) | safe }}">
+    {% endfor %}
+  {% elif section.extra.images %}
+    {% for image in section.extra.images %}
+      <meta property="og:image" content="{{ get_url(path=image) | safe }}">
+    {% endfor %}
+  {% elif config.extra.seo.image %}
+    <meta property="og:image" content="{{ config.extra.seo.image }}">
+  {% endif %}
+
+  <meta property="og:updated_time" content="{{ updated_time }}">
+  <meta property="og:site_name" content="{{ title }}">
+
+  {% if config.extra.seo.audio %}
+    <meta property="og:audio" content="{{ config.extra.seo.audio }}">
+  {% endif %}
+
+  {% if config.extra.seo.locale %}
+    <meta property="og:locale" content="{{ config.extra.seo.locale }}">
+  {% endif %}
+
+  <!-- og:video -->
+  {% if config.extra.seo.videos %}
+    {% for video in config.extra.seo.videos %}
+      <meta property="og:video" content="{{ get_url(path=video) }}">
+    {% endfor %}
+  {% endif %}
+{% endmacro %}
