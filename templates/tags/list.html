@@ -1,30 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="page-title">{{ "Tags" }}</h1>
-<div class="tags-expo">
-    <div class="tags-expo-list">
-        {% for tag in terms %}
-        <a href="{{ tag.permalink }}" class="post-tag">{{ tag.name }}</a>
-        {% endfor %}
-    </div>
-    <hr/>
-    <div class="tags-expo-section">
-        {% for tag in terms %}
-        <h2 id="{{ tag.name }}">{{ tag.name }}</h2>
-        <ul class="tags-expo-posts">
-            {% for post in tag.pages %}
-            <a class="post-title" href="{{ post.permalink }}">
-                
-                <li>
-                    {{loop.index}}.
-                    {{ post.title }}
-                    <small class="post-date">{{ post.date | date(format="%d %B %Y") }}</small>
-                </li>
-            </a>
-            {% endfor %}
-        </ul>
-        {% endfor %}
-    </div>
+<h1 class="text-3xl md:text-5xl text-left sm:text-center py-8 sm:py-16">Tags</h1>
+<div class="flex flex-wrap max-w-screen-md mx-auto">
+  {% for tag in terms %}
+    <a class="inline-block mr-8 py-4 text-xl sm:text-2xl text-theme-primary hover:text-theme-primary-offset" href="{{ tag.permalink }}">{{ tag.name }}<sup class="ml-1 text-lg">{{ tag.pages | length }}<sup></a>
+  {% endfor %}
 </div>
 {% endblock content %}

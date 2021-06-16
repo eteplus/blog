@@ -21,7 +21,7 @@
       <article class="relative max-w-screen-md flex flex-col md:flex-row mb-8">
         <div class="relative w-full flex flex-col text-base">
           {# title #}
-          <a class="text-lg text-left text-theme-primary mb-2" href="{{ post.permalink }}" alt="{{ post.title }}" rel="bookmark">
+          <a class="text-lg text-left text-theme-primary hover:text-theme-primary-offset mb-2" href="{{ post.permalink }}" alt="{{ post.title }}" rel="bookmark">
             <h2>{{ post.title }}</h2>
           </a>
           {# meta #}
@@ -37,7 +37,7 @@
                 {% for tag in post.taxonomies.tags %}
                   <a
                     href="{{ get_taxonomy_url(kind='tags', name=tag) }}"
-                    class="lowercase underline hover:text-theme-primary"
+                    class="lowercase underline hover:text-theme-primary-offset"
                     alt="{{ tag }}"
                   >{{ tag }}</a>
                   {% if not loop.last %}
@@ -57,7 +57,7 @@
       </article>
     {% endfor %}
     <div class="w-full flex">
-      <a class="text-base py-4 text-theme-primary no-underline" href="{{ get_url(path="@/posts/_index.md") }}">Read all posts&nbsp;»</a>
+      <a class="text-base py-4 text-theme-primary hover:text-theme-primary-offset no-underline" href="{{ get_url(path="@/posts/_index.md") }}">Read all posts&nbsp;»</a>
     </div>
   </div>
 {% endblock content %}

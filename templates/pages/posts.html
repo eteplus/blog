@@ -20,7 +20,7 @@
 
         <div class="relative w-full flex flex-2 flex-col">
           {# title #}
-          <a class="text-2xl text-left text-theme-primary mb-4" href="{{ post.permalink }}" alt="{{ post.title }}" rel="bookmark">
+          <a class="text-2xl text-left text-theme-primary hover:text-theme-primary-offset mb-4" href="{{ post.permalink }}" alt="{{ post.title }}" rel="bookmark">
             <h2>{{ post.title }}</h2>
           </a>
           {# meta #}
@@ -36,7 +36,7 @@
                 {% for tag in post.taxonomies.tags %}
                   <a
                     href="{{ get_taxonomy_url(kind='tags', name=tag) }}"
-                    class="lowercase underline hover:text-theme-primary"
+                    class="lowercase underline hover:text-theme-primary-offset"
                     alt="{{ tag }}"
                   >{{ tag }}</a>
                   {% if not loop.last %}
@@ -57,7 +57,7 @@
     {% endfor %}
 
     {# paginator #}
-    <div class="text-base pb-8">
+    <div class="text-base sm:text-lg pb-8">
       {% if paginator.previous %}
         <a class="text-theme-primary no-underline" href="{{ paginator.previous }}" alt="Previous">«&nbsp;Previous</a>
         <span class="mx-2">|</span>
