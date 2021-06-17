@@ -13,23 +13,26 @@
 {% endblock %}
 
 {% block content %}
-  <h1 class="w-full text-3xl md:text-5xl text-center py-16">Hello, I'm ETEPLUS. 👋</h1>
-  <div class="relative flex flex-col">
-    <h2 class="text-2xl mb-8 text-left">Recent Posts</h2>
+  <div class="font-mono text-left text-theme-text py-16 relative">
+    <h1 class="w-full text-3xl sm:text-5xl">Hello, I'm ETEPLUS</h1>
+    <p class="py-6 italic text-base sm:text-lg">This world is not beautiful, so beautiful is worth your pursuit. </p>
+  </div>
+  <div class="flex flex-col relative">
+    <h2 class="text-xl sm:text-2xl mb-8 sm:mb-12">Recent Posts</h2>
     {% set section = get_section(path="posts/_index.md") %}
     {% for post in section.pages | slice(end=3) %}
-      <article class="relative max-w-screen-md flex flex-col md:flex-row mb-8">
-        <div class="relative w-full flex flex-col text-base">
+      <article class="max-w-screen-md mb-8 sm:mb-12 relative">
+        <div class="flex flex-col w-full relative text-base sm:text-lg">
           {# title #}
-          <a class="text-lg text-left text-theme-primary hover:text-theme-primary-offset mb-2" href="{{ post.permalink }}" alt="{{ post.title }}" rel="bookmark">
+          <a class="text-xl sm:text-2xl mb-2 text-theme-primary hover:text-theme-primary-offset" href="{{ post.permalink }}" alt="{{ post.title }}" rel="bookmark">
             <h2>{{ post.title }}</h2>
           </a>
           {# meta #}
-          <div class="flex justify-start items-center flex-wrap mb-2 text-theme-text-offset">
+          <div class="flex flex-wrap justify-start items-center text-theme-text-offset mb-4">
             <span>{{ post.date | date(format='%b %d, %Y') }}</span>
             {% if post.reading_time %}
               <span class="mx-2 opacity-50">|</span>
-              <span>{{ post.reading_time }} minute read</span>
+              <span>{{ post.reading_time }} min read</span>
             {% endif %}
             {% if post.taxonomies.tags %}
               <span class="mx-2 opacity-50">|</span>
@@ -56,8 +59,6 @@
         </div>
       </article>
     {% endfor %}
-    <div class="w-full flex">
-      <a class="text-base py-4 text-theme-primary hover:text-theme-primary-offset no-underline" href="{{ get_url(path="@/posts/_index.md") }}">Read all posts&nbsp;»</a>
-    </div>
+    <a class="text-base sm:text-lg pb-8 sm:pb-16 text-theme-primary hover:text-theme-primary-offset no-underline" href="{{ get_url(path="@/posts/_index.md") }}">Read all posts&nbsp;»</a>
   </div>
 {% endblock content %}
