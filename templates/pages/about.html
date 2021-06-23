@@ -1,5 +1,9 @@
 {% extends "page.html" %}
 
+{% block favicons %}
+  {{ macros_head::favicons(emoji="👋") }}
+{% endblock favicons %}
+
 {% block seo %}
   {{ super() }}
   {% set title = page.title %}

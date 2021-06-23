@@ -1,5 +1,9 @@
 {% extends "section.html" %}
 
+{% block favicons %}
+  {{ macros_head::favicons(emoji="🤔") }}
+{% endblock favicons %}
+
 {% block content %}
   {% if paginator %}
     {% set posts = paginator.pages %}

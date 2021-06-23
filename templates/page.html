@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+{% block favicons %}
+  {{ macros_head::favicons(emoji="🤔") }}
+{% endblock favicons %}
+
 {% block seo %}
   {{ super() }}
 
