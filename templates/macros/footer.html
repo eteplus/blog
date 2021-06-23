@@ -2,7 +2,7 @@
 <footer class="relative px-6 py-4 sm:py-8 sm:px-12 text-base text-theme-text flex flex-wrap flex-col border-t border-solid border-theme-border">
   <div class="mb-4 flex items-center justify-center">
     {% if config.extra.github %}
-      <a class="mx-2" target="_blank" rel="external noopener" alt="github" href="{{ config.extra.github }}"
+      <a class="mx-2" target="_blank" rel="external noopener noreferrer" alt="github" href="{{ config.extra.github }}"
         ><svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -22,7 +22,7 @@
       </a>
     {% endif %}
     {% if config.generate_feed %}
-      <a class="mx-2" target="_blank" rel="external noopener" href="{{ get_url(path="atom.xml") }}">
+      <a class="mx-2" target="_blank" rel="external noopener noreferrer" href="{{ get_url(path="atom.xml") }}">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -46,7 +46,7 @@
     <a
       class="inline-block underline text-theme-primary hover:text-theme-primary-offset"
       target="_blank"
-      rel="external noopener license"
+      rel="external noopener noreferrer license"
       href="https://creativecommons.org/licenses/by-nc-nd/4.0/"
       >CC BY-NC-ND 4.0
     </a>

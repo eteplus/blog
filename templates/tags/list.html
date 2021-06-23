@@ -1,5 +1,14 @@
 {% extends "base.html" %}
 
+{% block seo %}
+  {{ super() }}
+  {% set title = "Tags" %}
+  {% if config.title %}
+    {% set title_addition = title_separator ~ config.title %}
+  {% endif %}
+  {{ macros_head::seo(title=title, title_addition=title_addition, description=config.description) }}
+{% endblock seo %}
+
 {% block content %}
 <h1 class="text-4xl sm:text-6xl text-left sm:text-center py-12 sm:py-16">Tags</h1>
 <div class="flex flex-wrap max-w-screen-md mx-auto">

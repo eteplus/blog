@@ -4,7 +4,8 @@
   {{ super() }}
 
   {% if section.title and config.title %}
-    {% set title = section.title ~ title_separator ~ config.title %}
+    {% set title = section.title %}
+    {% set title_addition = title_separator ~ config.title %}
   {% elif page.title %}
     {% set title = section.title %}
   {% else %}
@@ -17,7 +18,7 @@
     {% set description = config.description %}
   {% endif %}
 
-  {{ macros_head::seo(title=title, description=description) }}
+  {{ macros_head::seo(title=title, title_addition=title_addition, description=description) }}
 {% endblock %}
 
 {% block content %}
