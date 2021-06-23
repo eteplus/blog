@@ -1,4 +1,4 @@
-{% extends "page.html" %}
+{% extends "base.html" %}
 
 {% block favicons %}
   {{ macros_head::favicons(emoji="👋") }}
@@ -6,7 +6,28 @@
 
 {% block seo %}
   {{ super() }}
-  {% set title = page.title %}
+  {% if page.title and config.title %}
+    {% set title = page.title %}
+    {% set title_addition = title_separator ~ config.title %}
+  {% elif page.title %}
+    {% set title = page.title %}
+  {% else %}
+    {% set title = config.title %}
+  {% endif %}
+
+  {% if page.description %}
+    {% set description = page.description %}
+  {% else %}
+    {% set description = config.description %}
+  {% endif %}
+
+  {{ macros_head::seo(
+    title=title,
+    title_addition=title_addition,
+    description=description,
+    type="website",
+    created_time=page.date,
+    updated_time = page.updated) }}
 {% endblock seo %}
 
 {% block content %}

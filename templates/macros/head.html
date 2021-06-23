@@ -39,6 +39,15 @@
   <title>{{ title ~ title_addition }}</title>
   <meta name="description" content="{{ description }}">
   <link rel="canonical" href="{{ page_url | safe }}">
+
+  {% if config.extra.twitter %}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ title }}">
+    <meta name="twitter:description" content="{{ description }}">
+    <meta name="twitter:site" content="@{{ config.extra.twitter }}">
+    <meta name="twitter:creator" content="@{{ config.extra.twitter }}">
+  {% endif %}
+
   <meta property="og:title" content="{{ title }}">
   <meta property="og:description" content="{{ description }}">
   <meta property="og:type" content="{{ type }}">
