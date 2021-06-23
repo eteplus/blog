@@ -62,16 +62,16 @@
       {% endif %}
     </div>
     <div class="flex justify-between max-w-screen-md mx-auto mb-16">
-      {% if page.earlier %}
-        <div class="flex flex-1 flex-col text-left">
+      {% if page.later %}
+        <div class="flex-1 text-left">
           <p class="w-full">Previous</p>
-          <a class="inline-block text-theme-primary hover:text-theme-primary-offset no-underline" href="{{ page.earlier.permalink }}">«&nbsp;{{ page.earlier.title }}</a>
+          <a class="inline-block w-auto text-theme-primary hover:text-theme-primary-offset no-underline" href="{{ page.later.permalink }}">«&nbsp;{{ page.later.title }}</a>
         </div>
       {% endif %}
-      {% if page.later %}
-        <div class="flex flex-1 flex-col text-right">
+      {% if page.earlier %}
+        <div class="flex-1 text-right">
           <p class="w-full">Next</p>
-          <a class="inline-block text-theme-primary hover:text-theme-primary-offset no-underline" href="{{ page.later.permalink }}">{{ page.later.title }}&nbsp;»</a>
+          <a class="inline-block text-theme-primary hover:text-theme-primary-offset no-underline" href="{{ page.earlier.permalink }}">{{ page.earlier.title }}&nbsp;»</a>
         </div>
       {% endif %}
     </div>

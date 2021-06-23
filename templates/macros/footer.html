@@ -1,6 +1,6 @@
 {% macro render() %}
-<footer class="relative px-6 py-4 sm:py-8 sm:px-12 text-base flex flex-wrap flex-col border-t border-solid border-theme-border">
-  <div class="mb-4 flex items-center justify-center text-gray-900">
+<footer class="relative px-6 py-4 sm:py-8 sm:px-12 text-base text-theme-text flex flex-wrap flex-col border-t border-solid border-theme-border">
+  <div class="mb-4 flex items-center justify-center">
     {% if config.extra.github %}
       <a class="mx-2" target="_blank" rel="external noopener" alt="github" href="{{ config.extra.github }}"
         ><svg
@@ -47,8 +47,8 @@
       class="inline-block underline text-theme-primary hover:text-theme-primary-offset"
       target="_blank"
       rel="external noopener license"
-      href="https://creativecommons.org/licenses/by-nd/4.0/"
-      >CC BY-ND 4.0
+      href="https://creativecommons.org/licenses/by-nc-nd/4.0/"
+      >CC BY-NC-ND 4.0
     </a>
   </div>
 </footer>
