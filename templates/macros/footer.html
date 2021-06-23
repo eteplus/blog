@@ -22,7 +22,7 @@
       </a>
     {% endif %}
     {% if config.generate_feed %}
-      <a class="mx-2" target="_blank" rel="external noopener" href="/sitemap.xml">
+      <a class="mx-2" target="_blank" rel="external noopener" href="{{ get_url(path="atom.xml") }}">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"

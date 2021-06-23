@@ -16,6 +16,10 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no,viewport-fit=cover">
     {{ macros_head::favicons(emoji="👻") }}
     {{ macros_head::stylesheet() }}
+    
+    {% block atom %}
+      <link rel="alternate" type="application/atom+xml" title="Atom" href="{{ get_url(path="atom.xml",trailing_slash=false) }}">
+    {% endblock %}
 
     {% block seo %}
       {% if config.extra.title_separator %}

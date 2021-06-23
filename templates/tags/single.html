@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 
+{% block atom %}
+  {% set atom_path = "tags/" ~ term.name ~ "/atom.xml" %}
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="{{ get_url(path=atom_path, trailing_slash=false) }}">
+{% endblock atom %}
+
 {% block seo %}
   {{ super() }}
 
@@ -22,7 +27,7 @@
   {% else %}
     {% set posts = term.pages %}
   {% endif %}
-  <h1 class="text-3xl sm:text-5xl text-left sm:text-center py-12 sm:py-16">#{{ term.name }}</h1>
+  <h1 class="text-4xl sm:text-6xl text-left sm:text-center py-12 sm:py-16">#{{ term.name }}</h1>
   <div class="relative mx-auto max-w-screen-md flex flex-wrap">
     {{ macros_posts::render(posts=posts, paginator=paginator) }}
   </div>
