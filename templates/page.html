@@ -27,16 +27,15 @@
 
 {% block content %}
   <div class="post" role="document">
-
     <div class="post__header">
       <h1 class="post__title">{{ page.title | safe }}</h1>
       <div class="post__meta">
-        <span class="post__date">{{ page.date | date(format='%Y-%m-%d') }}</span>
-        {% if page.taxonomies.tags %}
-          {% for tag in page.taxonomies.tags %}
-            <span class="post__tag">{{ tag }}</span>
-          {% endfor %}
+        <span class="post__date">{{ page.date | date(format='%B %d, %Y') }}</span>
+        {% if page.reading_time %}
+          <span class="mx-2">•</span>
+          <span>{{ page.reading_time }} min read</span>
         {% endif %}
+        
       </div>
     </div>
 
@@ -49,26 +48,32 @@
     {% endif %}
 
     <div class="post__content">
-      {{ page.content | markdown(inline=true) | safe }}
+      {{ page.content | safe }}
     </div>
-  </div>
-  <div class="related">
-    <h2>Other Posts</h2>
-    <ul class="related-posts">
-      <li class="previous">
+    <div class="max-w-screen-md mx-auto border-b border-solid border-theme-border text-base sm:text-lg text-theme-text-offset py-4 mb-4">
+      {% if page.taxonomies.tags %}
+        {% for tag in page.taxonomies.tags %}
+          <a
+            href="{{ get_taxonomy_url(kind='tags', name=tag) }}"
+            class="lowercase hover:text-theme-primary-offset hover:underline mr-4"
+            alt="{{ tag }}"
+          >#{{ tag }}</a>
+        {% endfor %}
+      {% endif %}
+    </div>
+    <div class="flex justify-between max-w-screen-md mx-auto mb-16">
       {% if page.earlier %}
-        <small>Earlier {</small>
-        <a href="{{ page.earlier.permalink }}">{{ page.earlier.title }}</a>
-        <small>}</small>
+        <div class="flex flex-1 flex-col text-left">
+          <p class="w-full">Previous</p>
+          <a class="inline-block text-theme-primary hover:text-theme-primary-offset no-underline" href="{{ page.earlier.permalink }}">«&nbsp;{{ page.earlier.title }}</a>
+        </div>
       {% endif %}
-      </li>
-      <li class="next">
       {% if page.later %}
-        <small>{</small>
-        <a href="{{ page.later.permalink }}">{{ page.later.title }}</a>
-          <small>} Later</small>
+        <div class="flex flex-1 flex-col text-right">
+          <p class="w-full">Next</p>
+          <a class="inline-block text-theme-primary hover:text-theme-primary-offset no-underline" href="{{ page.later.permalink }}">{{ page.later.title }}&nbsp;»</a>
+        </div>
       {% endif %}
-      </li>
-    </ul>
+    </div>
   </div>
 {% endblock content %}

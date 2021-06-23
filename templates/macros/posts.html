@@ -9,30 +9,24 @@
 
     <div class="relative w-full flex flex-2 flex-col text-base sm:text-lg">
       {# title #}
-      <a class="text-xl sm:text-2xl text-theme-primary hover:text-theme-primary-offset mb-2" href="{{ post.permalink }}" alt="{{ post.title }}" rel="bookmark">
+      <a class="text-2xl sm:text-3xl text-theme-primary hover:text-theme-primary-offset mb-2" href="{{ post.permalink }}" alt="{{ post.title }}" rel="bookmark">
         <h2>{{ post.title }}</h2>
       </a>
       {# meta #}
       <div class="flex justify-start items-center flex-wrap mb-4 text-theme-text-offset">
         <span>{{ post.date | date(format='%b %d, %Y') }}</span>
-        {% if post.reading_time %}
-          <span class="mx-2 opacity-50">|</span>
-          <span>{{ post.reading_time }} min read</span>
-        {% endif %}
         {% if post.taxonomies.tags %}
-          <span class="mx-2 opacity-50">|</span>
-          <div class="flex items-center">
-            {% for tag in post.taxonomies.tags %}
-              <a
-                href="{{ get_taxonomy_url(kind='tags', name=tag) }}"
-                class="lowercase underline hover:text-theme-primary-offset"
-                alt="{{ tag }}"
-              >{{ tag }}</a>
-              {% if not loop.last %}
-                <span class="mx-2">•</span>
-              {% endif %}
-            {% endfor %}
-          </div>
+          <span class="mx-2">•</span>
+          {% for tag in post.taxonomies.tags %}
+            <a
+              href="{{ get_taxonomy_url(kind='tags', name=tag) }}"
+              class="lowercase hover:underline hover:text-theme-primary-offset"
+              alt="{{ tag }}"
+            >{{ tag }}</a>
+            {% if not loop.last %}
+              <span class="mx-2">•</span>
+            {% endif %}
+          {% endfor %}
         {% endif %}
       </div>
       {# summary #}
@@ -48,13 +42,13 @@
 {# paginator #}
 <div class="text-base sm:text-lg pb-8 sm:pb-16">
   {% if paginator.previous %}
-    <a class="text-theme-primary no-underline" href="{{ paginator.previous }}" alt="Previous">«&nbsp;Previous</a>
+    <a class="text-theme-primary hover:text-theme-primary-offset no-underline" href="{{ paginator.previous }}" alt="Previous">«&nbsp;Previous</a>
     <span class="mx-2">|</span>
   {% endif %}
   <span class="text-theme-text">Page {{ paginator.current_index }} of {{ paginator.number_pagers }}</span>
   {% if paginator.next %}
     <span class="mx-2">|</span>
-    <a class="text-theme-primary no-underline" href="{{ paginator.next }}" alt="Next">Next&nbsp;»</a>
+    <a class="text-theme-primary hover:text-theme-primary-offset no-underline" href="{{ paginator.next }}" alt="Next">Next&nbsp;»</a>
   {% endif %}
 </div>
 {% endmacro %}

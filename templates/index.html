@@ -13,41 +13,35 @@
 {% endblock %}
 
 {% block content %}
-  <div class="font-mono text-left text-theme-text py-16 relative">
-    <h1 class="w-full text-3xl sm:text-5xl">Hello, I'm ETEPLUS</h1>
-    <p class="py-6 italic text-base sm:text-lg">This world is not beautiful, so beautiful is worth your pursuit. </p>
+  <div class="text-left text-theme-text py-16 relative">
+    <h1 class="w-full text-3xl sm:text-5xl">Hello World!</h1>
+    <p class="font-mono py-6 italic text-base sm:text-lg">This world is not beautiful, so beautiful is worth your pursuit. </p>
   </div>
   <div class="flex flex-col relative">
-    <h2 class="text-xl sm:text-2xl mb-8 sm:mb-12">Recent Posts</h2>
+    <h2 class="text-2xl sm:text-3xl mb-8 sm:mb-12">Recent Posts</h2>
     {% set section = get_section(path="posts/_index.md") %}
     {% for post in section.pages | slice(end=3) %}
       <article class="max-w-screen-md mb-8 sm:mb-12 relative">
         <div class="flex flex-col w-full relative text-base sm:text-lg">
           {# title #}
-          <a class="text-xl sm:text-2xl mb-2 text-theme-primary hover:text-theme-primary-offset" href="{{ post.permalink }}" alt="{{ post.title }}" rel="bookmark">
+          <a class="text-2xl sm:text-3xl mb-2 text-theme-primary hover:text-theme-primary-offset" href="{{ post.permalink }}" alt="{{ post.title }}" rel="bookmark">
             <h2>{{ post.title }}</h2>
           </a>
           {# meta #}
           <div class="flex flex-wrap justify-start items-center text-theme-text-offset mb-4">
             <span>{{ post.date | date(format='%b %d, %Y') }}</span>
-            {% if post.reading_time %}
-              <span class="mx-2 opacity-50">|</span>
-              <span>{{ post.reading_time }} min read</span>
-            {% endif %}
             {% if post.taxonomies.tags %}
-              <span class="mx-2 opacity-50">|</span>
-              <div class="flex items-center">
-                {% for tag in post.taxonomies.tags %}
-                  <a
-                    href="{{ get_taxonomy_url(kind='tags', name=tag) }}"
-                    class="lowercase underline hover:text-theme-primary-offset"
-                    alt="{{ tag }}"
-                  >{{ tag }}</a>
-                  {% if not loop.last %}
-                    <span class="mx-2">•</span>
-                  {% endif %}
-                {% endfor %}
-              </div>
+              <span class="mx-2">-</span>
+              {% for tag in post.taxonomies.tags %}
+                <a
+                  href="{{ get_taxonomy_url(kind='tags', name=tag) }}"
+                  class="lowercase hover:underline hover:text-theme-primary-offset"
+                  alt="{{ tag }}"
+                >{{ tag }}</a>
+                {% if not loop.last %}
+                  <span class="mx-2">•</span>
+                {% endif %}
+              {% endfor %}
             {% endif %}
           </div>
           {# summary #}
@@ -59,6 +53,6 @@
         </div>
       </article>
     {% endfor %}
-    <a class="text-base sm:text-lg pb-8 sm:pb-16 text-theme-primary hover:text-theme-primary-offset no-underline" href="{{ get_url(path="@/posts/_index.md") }}">Read all posts&nbsp;»</a>
+    <a class="text-lg sm:text-xl pb-8 sm:pb-16 text-theme-primary hover:text-theme-primary-offset no-underline" href="{{ get_url(path="@/posts/_index.md") }}">Read all posts&nbsp;»</a>
   </div>
 {% endblock content %}

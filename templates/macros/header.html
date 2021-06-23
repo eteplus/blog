@@ -1,12 +1,12 @@
 {% macro render(current_section) %}
 <header class="relative w-full" role="banner">
-  <div class="relative max-w-screen-lg p-8 sm:p-12 mx-auto flex flex-col sm:flex-row flex-wrap items-center justify-between">
-    <div class="flex items-center text-lg">
+  <div class="relative max-w-screen-lg p-8 sm:py-12 lg:px-0 mx-auto flex flex-col sm:flex-row flex-wrap items-center justify-between">
+    <div class="flex items-center text-xl py-4">
       {# <img class="block w-10 h-10 rounded-full mr-2" src="https://avatars.githubusercontent.com/u/9312677" alt="{{ config.extra.author }}"> #}
       {% set author = "<" ~ config.extra.author ~ " />" %}
       <a class="font-semibold cursor-pointer" href="{{ config.base_url | safe }}">{{ author | upper }}</a>
     </div>
-    <div class="menu relative w-auto flex items-center text-center">
+    <div class="menu relative w-auto flex items-center text-center text-lg">
       <nav>
         <ul>
           {% for item in config.extra.menus %}

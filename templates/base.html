@@ -28,15 +28,15 @@
 
   <body class="relative w-full h-full flex flex-col overflow-x-hidden min-h-screen">
     {% block header %}
-      {{ macros_header::render(current_section=current_path) }}
+      {{ macros_header::render(current_section=current_path | default(value="/")) }}
     {% endblock header %}
 
-    <main class="relative w-full flex flex-1 flex-col max-w-screen-lg mx-auto px-8 sm:px-12" role="main">
+    <main class="relative w-full flex flex-1 flex-col max-w-screen-lg mx-auto px-8 lg:px-0" role="main">
       {% block content %}{% endblock content %}
     </main>
 
     {% block footer %}
-      {{ macros_footer::render(current_section=current_path) }}
+      {{ macros_footer::render(current_section=current_path | default(value="/")) }}
     {% endblock footer %}
 
     {{ macros_search::inject() }}

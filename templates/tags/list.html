@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="text-3xl sm:text-5xl text-left sm:text-center py-12 sm:py-16">Tags</h1>
+<h1 class="text-4xl sm:text-6xl text-left sm:text-center py-12 sm:py-16">Tags</h1>
 <div class="flex flex-wrap max-w-screen-md mx-auto">
   {% for tag in terms %}
-    <a class="inline-block px-4 py-2 mb-4 mr-4 text-lg sm:text-xl text-theme-text bg-theme-primary rounded-3xl" href="{{ tag.permalink }}">{{ tag.name }}<sup class="ml-1 text-lg">{{ tag.pages | length }}<sup></a>
+    <a class="relative inline-block mb-6 mr-12 text-xl transition-transform transform hover:scale-110 text-theme-primary hover:text-theme-primary-offset" href="{{ tag.permalink }}"><span class="text-theme-text hover:text-theme-primary-offset">{{ tag.name }}</span><sup class="left-1 text-lg">{{ tag.pages | length }}</sup></a>
   {% endfor %}
 </div>
 {% endblock content %}

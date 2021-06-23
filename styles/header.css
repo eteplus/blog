@@ -11,7 +11,7 @@
     content: "";
     position: absolute;
     right: 100%;
-    bottom: 6px;
+    bottom: 12px;
     left: 0.75rem;
     height: 4px;
     background-color: var(--color-border);
