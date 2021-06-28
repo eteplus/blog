@@ -10,6 +10,7 @@ module.exports = {
         theme: {
           bg: "var(--color-bg)",
           "bg-offset": "var(--color-bg-offset)",
+          headline: "var(--color-headline)",
           text: "var(--color-text)",
           "text-offset": "var(--color-text-offset)",
           border: "var(--color-border)",

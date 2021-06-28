@@ -5,9 +5,7 @@
 {% import 'macros/posts.html' as macros_posts %}
 
 <!DOCTYPE html>
-<html
-  lang="{{ config.extra.language_code | default(value="en") }}"
-  data-theme="{{ config.extra.theme | default(value="light") }}">
+<html lang="{{ config.extra.language_code | default(value="en") }}">
 
   <head>
     <meta charset="utf-8">
@@ -35,6 +33,13 @@
         {% set title_separator = " | " %}
       {% endif %}
     {% endblock seo %}
+
+    <script>
+      if (window.localStorage) {
+        var theme = window.localStorage.getItem('theme');
+        document.documentElement.setAttribute('data-theme', theme || 'light');
+      } 
+    </script>
   </head>
 
   <body class="relative w-full h-full flex flex-col overflow-x-hidden min-h-screen">
@@ -50,7 +55,7 @@
       {{ macros_footer::render(current_section=current_path | default(value="/")) }}
     {% endblock footer %}
 
+    {{ macros_head::scripts() }}
     {{ macros_search::inject() }}
-
   </body>
 </html>

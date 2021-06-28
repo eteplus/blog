@@ -1,4 +1,4 @@
-.menu a {
+.menu a:not(#toggle-theme) {
   @apply relative p-4 inline-block align-baseline focus:outline-none;
 
   &.active:before {
@@ -20,5 +20,28 @@
 
   &:hover:before {
     right: 0.75rem;
+  }
+}
+
+#toggle-theme {
+  @apply inline-block align-top;
+
+  width: 24px;
+  height: 24px;
+}
+
+.icon-light, .icon-dark {
+  @apply hidden;
+}
+
+[data-theme="light"] {
+  .icon-light {
+    @apply block;
+  }
+}
+
+[data-theme="dark"] {
+  .icon-dark {
+    @apply block;
   }
 }

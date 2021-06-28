@@ -2,6 +2,7 @@
 node_modules
 /public
 /dist
+/static/css/main.css
 
 # Log files
 npm-debug.log*

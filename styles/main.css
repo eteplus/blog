@@ -14,5 +14,11 @@
     transition: color .2s, background-color .2s;
     color: var(--color-text);
     background-color: var(--color-bg);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  ::selection {
+    background: var(--color-secondary);
+    color: #fff;
   }
 }

@@ -1,3 +1,7 @@
+{% macro scripts() %}
+  <script src="{{ get_url(path="js/main.js") }}"></script>
+{% endmacro %}
+
 {% macro stylesheet() %}
   <link rel="stylesheet" href="{{ get_url(path="css/main.css") }}" />
 {% endmacro %}

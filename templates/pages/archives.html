@@ -2,16 +2,16 @@
 
 {% block content %}
   {% set section = get_section(path="posts/_index.md") %}
-  <h1 class="text-4xl sm:text-6xl text-left sm:text-center py-12 sm:py-16">Archives</h1>
+  <h1 class="text-theme-headline text-4xl sm:text-6xl text-left sm:text-center py-12 sm:py-16">Archives</h1>
   <div class="relative flex flex-col max-w-screen-md mx-auto pb-12 sm:pb-16">
     {% for year, posts in section.pages | group_by(attribute="year") %}
-      <h2 class="text-2xl sm:text-3xl pb-2 sm:pb-4">{{ year }}</h2>
+      <h2 class="text-theme-headline text-2xl sm:text-3xl pb-2 sm:pb-4">{{ year }}</h2>
       <ul class="list-disc text-base sm:text-lg pl-4 pb-8 sm:pb-12">
         {% for post in posts %}
           <li class="relative w-full mb-2 sm:mb-4">
             <span class="text-theme-text-offset mr-4">{{ post.date | date(format='%b %d') }}</span>
             {# title #}
-            <a class="inline-block text-theme-primary hover:text-theme-primary-offset" href="{{ post.permalink }}" alt="{{ post.title }}" rel="bookmark">
+            <a class="inline-block text-theme-primary hover:underline" href="{{ post.permalink }}" alt="{{ post.title }}" rel="bookmark">
               <h2>{{ post.title }}</h2>
             </a>
           </li>

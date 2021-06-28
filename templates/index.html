@@ -13,18 +13,18 @@
 {% endblock %}
 
 {% block content %}
-  <div class="text-left text-theme-text py-16 relative">
-    <h1 class="w-full text-4xl sm:text-6xl">Hello World!</h1>
+  <div class="text-left py-16 relative">
+    <h1 class="w-full text-4xl sm:text-6xl text-theme-headline">Hello World!</h1>
     <p class="font-mono py-6 italic text-base sm:text-lg">This world is not beautiful, so beautiful is worth your pursuit. </p>
   </div>
   <div class="flex flex-col relative">
-    <h2 class="text-2xl sm:text-3xl mb-8 sm:mb-12">Recent Posts</h2>
+    <h2 class="text-2xl sm:text-3xl mb-8 sm:mb-12 text-theme-headline">Recent Posts</h2>
     {% set section = get_section(path="posts/_index.md") %}
     {% for post in section.pages | slice(end=3) %}
       <article class="max-w-screen-md mb-8 sm:mb-12 relative">
         <div class="flex flex-col w-full relative text-base sm:text-lg">
           {# title #}
-          <a class="text-2xl sm:text-3xl mb-2 text-theme-primary hover:text-theme-primary-offset" href="{{ post.permalink }}" alt="{{ post.title }}" rel="bookmark">
+          <a class="text-2xl sm:text-3xl mb-2 text-theme-primary hover:underline" href="{{ post.permalink }}" alt="{{ post.title }}" rel="bookmark">
             <h2>{{ post.title }}</h2>
           </a>
           {# meta #}
@@ -35,7 +35,7 @@
               {% for tag in post.taxonomies.tags %}
                 <a
                   href="{{ get_taxonomy_url(kind='tags', name=tag) }}"
-                  class="lowercase hover:underline hover:text-theme-primary-offset"
+                  class="lowercase hover:underline hover:text-theme-primary"
                   alt="{{ tag }}"
                 >{{ tag }}</a>
                 {% if not loop.last %}
@@ -53,6 +53,6 @@
         </div>
       </article>
     {% endfor %}
-    <a class="text-lg sm:text-xl pb-8 sm:pb-16 text-theme-primary hover:text-theme-primary-offset no-underline" href="{{ get_url(path="@/posts/_index.md") }}">Read all posts&nbsp;»</a>
+    <a class="text-lg sm:text-xl pb-8 sm:pb-16 text-theme-primary hover:underline" href="{{ get_url(path="@/posts/_index.md") }}">Read all posts&nbsp;»</a>
   </div>
 {% endblock content %}
