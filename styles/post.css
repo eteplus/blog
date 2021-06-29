@@ -79,6 +79,7 @@
 .post__content blockquote {
   @apply text-lg italic;
 
+  quotes: '“' '”' '‘' '’';
   border-left: 0.25em solid var(--color-secondary);
   line-height: 2;
   padding: 0.25em 1em;

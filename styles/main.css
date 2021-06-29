@@ -21,4 +21,8 @@
     background: var(--color-secondary);
     color: #fff;
   }
+
+  main img {
+    content-visibility: auto;
+  }
 }
