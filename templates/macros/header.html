@@ -11,7 +11,7 @@
         <a class="{% if item.url == current_section  %}active{% elif item.url != '/' and item.url in current_section %}active{% else %}{% endif %}" href="{{ item.url | safe }}">{{ item.name }}</a>
       </li>
       {% endfor %}
-      <li class="inline-block focus:outline-none overflow-hidden">
+      <li class="inline-block focus:outline-none overflow-hidden px-2">
         <a id="toggle-theme" class="relative cursor-pointer">
           <svg
             class="icon-theme-switch"
