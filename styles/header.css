@@ -24,10 +24,15 @@
 }
 
 #toggle-theme {
-  @apply inline-block align-top;
+  @apply inline-flex items-center justify-center;
 
-  width: 24px;
-  height: 24px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+
+  &:hover {
+    background-color: var(--color-border);
+  }
 }
 
 .icon-light, .icon-dark {
@@ -35,13 +40,13 @@
 }
 
 [data-theme="light"] {
-  .icon-light {
+  .icon-dark {
     @apply block;
   }
 }
 
 [data-theme="dark"] {
-  .icon-dark {
+  .icon-light {
     @apply block;
   }
 }

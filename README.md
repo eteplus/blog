@@ -1,6 +1,6 @@
 # Just a blog (https://eteplus.com)
 
-> A blog powered by  [Zola](https://www.getzola.org/documentation/getting-started/installation/) and [Tailwindcss](https://tailwindcss.com/)
+> A blog powered by [Zola](https://www.getzola.org/documentation/getting-started/installation/) and [Tailwindcss](https://tailwindcss.com/)
 
 ## Requirements
 
