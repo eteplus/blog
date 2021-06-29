@@ -243,6 +243,10 @@
   @apply pr-6;
 }
 
+.post__img {
+  @apply lg:-mx-12;
+}
+
 /* code */
 
 .post__content pre {
