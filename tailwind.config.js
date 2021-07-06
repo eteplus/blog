@@ -15,7 +15,6 @@ module.exports = {
           "text-offset": "var(--color-text-offset)",
           border: "var(--color-border)",
           primary: "var(--color-primary)",
-          "primary-offset": "var(--color-primary-offset)",
           secondary: "var(--color-secondary)",
         },
       },
