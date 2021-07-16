@@ -3,7 +3,9 @@
 {% endmacro %}
 
 {% macro stylesheet() %}
-  <link rel="stylesheet" href="{{ get_url(path="css/main.css") }}" />
+  <link rel="preload" href="{{ get_url(path="/fonts/noto-serif/noto-serif-v11-latin-regular.woff2") }}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ get_url(path="/fonts/noto-serif/noto-serif-v11-latin-italic.woff2") }}" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="{{ get_url(path="css/main.css") }}" as="style" />
 {% endmacro %}
 
 {% macro favicons(emoji="👻") %}
@@ -41,6 +43,11 @@
   {% endif %}
 
   <title>{{ title ~ title_addition }}</title>
+
+  {% if config.extra.author %}
+    <meta name="author" content="{{ config.extra.author }}">
+  {% endif %}
+  
   <meta name="description" content="{{ description }}">
   <link rel="canonical" href="{{ page_url | safe }}">
 

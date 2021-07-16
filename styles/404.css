@@ -1,0 +1,23 @@
+.not-found {
+  @apply w-full flex flex-col items-center p-16 pt-32 sm:pt-16 text-center;
+
+  color: var(--color-headline);
+
+  svg {
+    @apply mx-auto mb-8;
+  }
+}
+
+.not-found__title {
+  @apply text-2xl mb-8;
+}
+
+.not-found__back {
+  @apply inline-flex border-b-primary;
+  
+  color: var(--color-text-offset);
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}

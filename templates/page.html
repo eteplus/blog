@@ -45,8 +45,8 @@
       </div>
     </div>
 
-    {% if page.extra.cover %}
-      <div class="post__hero" style="background-image: url({{ get_url(path=page.extra.cover) }});"></div>
+    {% if page.extra.hero %}
+      <div class="post__hero" style="background-image: url({{ get_url(path=page.extra.hero) }});"></div>
     {% endif %}
 
     {% if page.description %}

@@ -13,29 +13,41 @@
 {% endblock %}
 
 {% block content %}
-  <div class="text-left py-16 relative">
-    <h1 class="w-full text-4xl sm:text-6xl text-theme-headline">Hello World!</h1>
-    <p class="font-mono py-6 italic text-base sm:text-lg">This world is not beautiful, so beautiful is worth your pursuit. </p>
+  <div class="welcome">
+    <div class="welcome__title">
+      <div class="welcome__title-word">
+        <span>Hello</span>
+        <p>I'm ETEPLUS 👋</p>
+      </div>
+      <div class="welcome__title-word">
+        <span>World</span>
+        <p >This world is not beautiful, so beautiful is worth your pursuit.</p>
+      </div>
+      <div class="welcome__title-word">
+        <span>🐱</span>
+        <p >Coding for fun and with ❤️.</p>
+      </div>
+    </div>
   </div>
-  <div class="flex flex-col relative">
-    <h2 class="text-2xl sm:text-3xl mb-8 sm:mb-12 text-theme-headline">Recent Posts</h2>
+  <h2 class="recent-post-list-title">Recent Posts</h2>
+  <div class="recent-post-list">
     {% set section = get_section(path="posts/_index.md") %}
     {% for post in section.pages | slice(end=3) %}
-      <article class="max-w-screen-md mb-8 sm:mb-12 relative">
-        <div class="flex flex-col w-full relative text-base sm:text-lg">
+      <article class="post-item recent-post-item">
+        <div class="post-item__inner">
           {# title #}
-          <a class="text-2xl sm:text-3xl mb-2 text-theme-primary hover:underline" href="{{ post.permalink }}" alt="{{ post.title }}" rel="bookmark">
-            <h2>{{ post.title }}</h2>
+          <a class="post-item__title" href="{{ post.permalink }}" alt="{{ post.title }}" rel="bookmark">
+            {{ post.title }}
           </a>
           {# meta #}
-          <div class="flex flex-wrap justify-start items-center text-theme-text-offset mb-4">
+          <div class="post-item__meta">
             <span>{{ post.date | date(format='%b %d, %Y') }}</span>
             {% if post.taxonomies.tags %}
-              <span class="mx-2">-</span>
+              <span class="mx-2">•</span>
               {% for tag in post.taxonomies.tags %}
                 <a
                   href="{{ get_taxonomy_url(kind='tags', name=tag) }}"
-                  class="lowercase hover:underline hover:text-theme-primary"
+                  class="post-item__tag"
                   alt="{{ tag }}"
                 >{{ tag }}</a>
                 {% if not loop.last %}
@@ -46,13 +58,13 @@
           </div>
           {# summary #}
           {% if post.summary %}
-            <div class="text-theme-text break-words">{{ post.summary | safe }}</div>
+            <div class="post-item__summary">{{ post.summary | safe }}</div>
           {% elif post.description %}
-            <p class="text-theme-text break-words">{{ post.description | safe }}</p>
+            <p class="post-item__description">{{ post.description | safe }}</p>
           {% endif %}
         </div>
       </article>
     {% endfor %}
-    <a class="text-lg sm:text-xl pb-8 sm:pb-16 text-theme-primary hover:underline" href="{{ get_url(path="@/posts/_index.md") }}">Read all posts&nbsp;»</a>
   </div>
+  <a class="read-all-post-list" href="{{ get_url(path="@/posts/_index.md") }}">Read all posts&nbsp;»</a>
 {% endblock content %}

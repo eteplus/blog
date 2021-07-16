@@ -1,0 +1,21 @@
+.tag-list {
+  @apply relative flex flex-wrap max-w-screen-md mx-auto;
+}
+
+.tag {
+  @apply relative inline-block mb-6 mr-12 text-xl border-b-primary;
+
+  span {
+    color: var(--color-text);
+  }
+
+  sup {
+    @apply text-lg;
+
+    color: var(--color-primary);
+  }
+
+  &:hover span {
+    color: var(--color-primary);
+  }
+}

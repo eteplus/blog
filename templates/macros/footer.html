@@ -1,42 +1,24 @@
 {% macro render() %}
-<footer class="relative px-6 py-4 sm:py-8 sm:px-12 text-base text-theme-text flex flex-wrap flex-col border-t border-solid border-theme-border">
-  <div class="mb-4 flex items-center justify-center">
+<footer class="footer">
+  <div class="footer__icons">
     {% if config.extra.email %}
-      <a  class="mx-2" target="_blank" rel="external noopener noreferrer" alt="mailto" href="mailto:{{ config.extra.email }}">
-        <svg class="inline-block icon-twitter" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+      <a target="_blank" rel="external noopener noreferrer" href="mailto:{{ config.extra.email }}" alt="mailto">
+        <svg class="icon-twitter" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+          <title>Mail To</title>
           <path fill="currentColor" d="M791.408641 94.14417 235.828077 94.14417c-127.869273 0-231.501538 103.656825-231.501538 231.501538l0 370.402051c0 127.845737 103.633289 231.501538 231.501538 231.501538l555.581588 0c127.845737 0 231.525074-103.656825 231.525074-231.501538L1022.934738 325.645708C1022.933715 197.800995 919.254378 94.14417 791.408641 94.14417zM282.127566 186.743148l463.004099 0c89.325421 0 163.900907 63.254649 181.356464 147.410328L514.033309 595.114976 100.881618 333.73392C118.494765 249.789043 192.950524 186.743148 282.127566 186.743148zM745.132688 834.95032 282.127566 834.95032c-102.277408 0-185.202049-82.924641-185.202049-185.202049L96.925516 440.969247l393.07954 248.682849c0.485047 0.277316 0.977257 0.533143 1.468444 0.792039 0.106424 0.059352 0.214894 0.115634 0.322341 0.173962 0.187265 0.097214 0.37453 0.193405 0.562818 0.288572 13.703093 7.131421 30.679743 7.362688 45.078685-0.87288l392.918881-248.569262 0 208.28272C930.355203 752.025679 847.409073 834.95032 745.132688 834.95032z"></path>
         </svg>
       </a>
     {% endif %}
     {% if config.extra.twitter %}
-      <a class="mx-2" target="_blank" rel="external noopener noreferrer" alt="twitter"  href="https://twitter.com/{{ config.extra.twitter }}">
-        <svg class="inline-block icon-twitter" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+      <a target="_blank" rel="external noopener noreferrer" href="https://twitter.com/{{ config.extra.twitter }}" alt="twitter">
+        <svg class="icon-twitter" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+          <title>Twitter</title>
           <path fill="currentColor" d="M854.613333 187.221333a39.338667 39.338667 0 0 0 13.226667-7.552 42.581333 42.581333 0 0 1 60.16 4.053334c15.530667 17.792 13.696 44.8-4.053333 60.330666a124.330667 124.330667 0 0 1-41.344 23.936c-25.6 8.917333-51.456 9.685333-75.434667 5.888a121.770667 121.770667 0 0 1-12.117333-2.474666 42.666667 42.666667 0 0 1-22.186667-14.464c-35.242667-43.776-76.928-54.186667-135.253333-32.725334-54.741333 20.181333-76.586667 65.450667-66.261334 149.248 3.157333 25.6-16.853333 48.128-42.581333 48-137.173333-0.853333-262.912-61.610667-375.594667-180.053333a42.837333 42.837333 0 0 1 1.408-60.501333 42.581333 42.581333 0 0 1 60.330667 1.450666c84.224 88.576 173.525333 138.24 268.8 150.528 1.408-93.184 43.050667-158.890667 124.416-188.928 86.186667-31.786667 162.346667-16 219.946667 46.293334 9.088 0.64 18.432-0.213333 26.538666-3.029334zM360.192 810.496c157.866667 0 298.112-67.328 389.973333-220.714667 33.706667-56.192 52.565333-121.386667 56.576-196.266666a42.666667 42.666667 0 1 1 85.205334 4.565333c-4.736 88.405333-27.562667 167.210667-68.608 235.733333C714.794667 815.061333 546.090667 896 360.192 896c-97.834667 0-184.106667-26.922667-257.408-80.810667-34.944-25.6-13.909333-81.066667 29.184-77.056 62.421333 5.888 134.442667-15.104 216.192-64.682666a42.624 42.624 0 0 1 58.581333 14.464c12.202667 20.224 5.76 46.506667-14.421333 58.709333-39.424 23.893333-77.738667 42.410667-114.901333 55.381333a390.613333 390.613333 0 0 0 82.773333 8.490667zM136.405333 371.541333A42.624 42.624 0 1 1 215.04 338.346667c9.301333 22.186667 24.234667 38.229333 46.08 49.408 20.992 10.709333 29.312 36.48 18.645333 57.514666a42.624 42.624 0 0 1-57.386666 18.645334 179.626667 179.626667 0 0 1-85.973334-92.416z m39.253334 170.026667a42.794667 42.794667 0 0 1 15.018666-58.581333 42.624 42.624 0 0 1 58.453334 15.018666c16.768 28.373333 33.664 42.922667 50.261333 46.805334a42.752 42.752 0 0 1-19.2 83.285333c-42.069333-9.728-76.8-39.594667-104.533333-86.528z"></path>
         </svg>
       </a>
     {% endif %}
     {% if config.extra.github %}
-      <a class="mx-2" target="_blank" rel="external noopener noreferrer" alt="github" href="{{ config.extra.github }}"
-        ><svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="inline-block icon-github"
-        >
-          <path
-            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
-          />
-        </svg>
-      </a>
-    {% endif %}
-    {% if config.generate_feed %}
-      <a class="mx-2" target="_blank" rel="external noopener noreferrer" href="{{ get_url(path="atom.xml") }}">
+      <a target="_blank" rel="external noopener noreferrer" href="{{ config.extra.github }}" alt="github">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -47,18 +29,40 @@
           stroke-width="2"
           stroke-linecap="round"
           stroke-linejoin="round"
-          class="inline-block icon-rss"
+          class="icon-github"
         >
+          <title>Github</title>
+          <path
+            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+          />
+        </svg>
+      </a>
+    {% endif %}
+    {% if config.generate_feed %}
+      <a target="_blank" rel="external noopener noreferrer" href="{{ get_url(path="atom.xml") }}" alt="rss">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="icon-rss"
+        >
+          <title>Rss Feed</title>
           <path d="M4 11a9 9 0 0 1 9 9" />
           <path d="M4 4a16 16 0 0 1 16 16" />
-          <circle cx="5" cy="19" r="1" /></svg>
+          <circle cx="5" cy="19" r="1" />
+        </svg>
       </a>
     {% endif %}
   </div>
-  <div class="flex items-center justify-center flex-wrap">
-    <span class="mr-2"> Copyright © 2021 {{ config.extra.author }}. Licensed under</span>
+  <div class="footer__licence">
+    <span> Copyright © 2021 {{ config.extra.author }}. Licensed under</span>
     <a
-      class="inline-block text-theme-primary hover:underline"
       target="_blank"
       rel="external noopener noreferrer license"
       href="https://creativecommons.org/licenses/by-nc-nd/4.0/"

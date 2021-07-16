@@ -1,4 +1,8 @@
 <div class="post__img">
-  {% set path = "images/" ~ page.slug ~ "/" ~ src %}
-  <img {% if class %}class="{{ class }}"{% endif %} src="{{ get_url(path=path) }}" {% if alt %}alt="{{ alt }}"{% endif %} {% if width %}width="{{width}}{% endif %} {% if height %}height="{{height}}{% endif %} loading="lazy">
+  {% if "http://" in src or "https://" in src %}
+    {% set path = src %}
+  {% else %}
+    {% set path = get_url(path="images/" ~ page.slug ~ "/" ~ src) %}
+  {% endif %}
+  <img {% if class %}class="{{ class }}"{% endif %} src="{{ path }}" {% if alt %}alt="{{ alt }}"{% endif %} {% if width %}width="{{width}}{% endif %} {% if height %}height="{{height}}{% endif %} loading="lazy">
 </div>

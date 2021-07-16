@@ -10,10 +10,10 @@
 {% endblock seo %}
 
 {% block content %}
-<h1 class="text-theme-headline text-4xl sm:text-6xl text-left sm:text-center py-12 sm:py-16">Tags</h1>
-<div class="flex flex-wrap max-w-screen-md mx-auto">
+<h1 class="title">All Tags</h1>
+<div class="tag-list">
   {% for tag in terms %}
-    <a class="relative inline-block mb-6 mr-12 text-xl transition-transform transform hover:scale-110 text-theme-primary" href="{{ tag.permalink }}"><span class="text-theme-text hover:text-theme-primary">{{ tag.name }}</span><sup class="left-1 text-lg">{{ tag.pages | length }}</sup></a>
+    <a class="tag" href="{{ tag.permalink }}" alt="{{ tag.name }}"><span>{{ tag.name }}</span><sup>{{ tag.pages | length }}</sup></a>
   {% endfor %}
 </div>
 {% endblock content %}

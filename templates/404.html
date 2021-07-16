@@ -15,9 +15,8 @@
 {% endblock %}
 
 {% block content %}
-<div class="w-full flex flex-col p-16 pt-32 sm:pt-16 text-theme-headline text-center">
+<div class="not-found">
   <svg
-    class="mx-auto mb-8"
     viewBox="0 0 1024 1024"
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
@@ -41,9 +40,9 @@
       d="M622.244358 641.753179l-103.869672-46.610574c-4.26207-1.912559-9.138124-1.789763-13.30605 0.306992l-91.862197 46.611597c-7.622608 3.859911-10.648524 13.149485-6.789637 20.774139 3.825119 7.596002 13.117762 10.55745 20.741393 6.79066l85.286432-43.274596 97.111758 43.584658c2.038426 0.925069 4.229325 1.358951 6.329149 1.358951 5.865591 0 11.512195-3.364631 14.0766-9.106402C633.509936 654.408407 630.021485 645.272329 622.244358 641.753179L622.244358 641.753179z"
     />
   </svg>
-  <div class="text-2xl sm:text-4xl mb-8">This page could not be found</div>
+  <div class="not-found__title">This page could not be found</div>
   <a
-    class="text-theme-text-offset hover:underline hover:text-theme-primary"
+    class="not-found__back"
     href="{{ config.base_url }}"
   >
     «&nbsp;Back to Home

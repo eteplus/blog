@@ -13,7 +13,7 @@
   :root {
     --color-bg: #242629;
     --color-bg-offset: #16161a;
-    --color-headline: #fffffe;
+    --color-headline: #efefef;
     --color-text: #94a1b2;
     --color-text-offset: #94a1b2;
     --color-border: #72757e;
@@ -36,7 +36,7 @@
 [data-theme='dark'] {
   --color-bg: #242629;
   --color-bg-offset: #16161a;
-  --color-headline: #fffffe;
+  --color-headline: #efefef;
   --color-text: #94a1b2;
   --color-text-offset: #94a1b2;
   --color-border: #72757e;

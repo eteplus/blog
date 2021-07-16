@@ -1,0 +1,29 @@
+.archive-wrapper {
+  @apply relative flex flex-col max-w-screen-md sm:mx-auto pb-16;
+}
+
+.archive-year {
+  @apply text-2xl pb-2;
+
+  color: var(--color-headline);
+}
+
+.archive-list {
+  @apply list-disc text-lg pl-4 pb-8;
+}
+
+.archive-item {
+  @apply relative w-full mb-2;
+}
+
+.archive-item__date {
+  @apply mr-4;
+
+  color: var(--color-text-offset);
+}
+
+.archive-item__title {
+  @apply inline-block border-b-primary hover:text-[color:var(--color-primary)];
+  
+  color: var(--color-headline);
+}

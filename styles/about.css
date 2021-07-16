@@ -1,0 +1,25 @@
+.about {
+  @apply w-full flex flex-col text-center text-lg sm:text-2xl;
+
+  p {
+    @apply py-4;
+  }
+}
+
+.about__title {
+  @apply inline-flex self-start text-2xl sm:text-4xl text-center my-12 sm:my-16 mx-auto;
+
+  color: var(--color-headline);
+
+  /* background-image: linear-gradient(transparent 0%, transparent calc(50% - 12px), var(--color-bg-offset) 90%, var(--color-bg-offset) 100%); */
+}
+
+.about__link {
+  @apply border-b-primary;
+
+  border-bottom-color: var(--color-border);
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}

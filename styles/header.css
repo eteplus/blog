@@ -1,51 +1,78 @@
-.menu a:not(#toggle-theme) {
+header {
+  @apply relative w-full;
+
+  color: var(--color-headline);
+}
+
+.navbar {
+  @apply relative max-w-screen-lg mx-auto p-8 sm:py-12;
+  @apply flex flex-col sm:flex-row flex-wrap items-center justify-between;
+}
+
+.navbar__author {
+  @apply flex items-center text-xl py-4;
+
+  a {
+    @apply inline-block font-semibold cursor-pointer;
+  }
+}
+
+.navbar__menu {
+  @apply relative w-auto text-center text-lg;
+  @apply flex items-center flex-wrap;
+}
+
+.navbar__menu-item {
+  @apply inline-block focus:outline-none;
+}
+
+.navbar__menu-item a:not(#toggle-theme) {
   @apply relative p-4 inline-block align-baseline focus:outline-none;
 
-  &.active:before {
-    background-color: var(--color-primary);
-    transition: none;
-    right: 0.75rem;
-  }
-
   &:before {
-    content: "";
+    content: '';
     position: absolute;
     right: 100%;
     bottom: 12px;
-    left: 0.75rem;
+    left: 1rem;
     height: 4px;
+    border-radius: 4px;
     background-color: var(--color-border);
     transition: all 0.35s ease-in-out;
   }
 
   &:hover:before {
-    right: 0.75rem;
+    right: 1rem;
   }
 }
 
-#toggle-theme {
-  @apply inline-flex items-center justify-center;
+.navbar__menu-item--active a:not(#toggle-theme):before {
+  background-color: var(--color-primary);
+  transition: none;
+  right: 1rem;
+}
 
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
+#toggle-theme {
+  @apply relative w-[36px] h-[36px] rounded-[50%];
+  @apply inline-flex items-center justify-center cursor-pointer;
 
   &:hover {
     background-color: var(--color-border);
   }
 }
 
-.icon-light, .icon-dark {
+.icon-light,
+.icon-dark {
   @apply hidden;
 }
 
-[data-theme="light"] {
+[data-theme='light'] {
   .icon-dark {
     @apply block;
   }
 }
 
-[data-theme="dark"] {
+[data-theme='dark'] {
   .icon-light {
     @apply block;
   }

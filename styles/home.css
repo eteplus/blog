@@ -1,0 +1,86 @@
+.welcome {
+  @apply relative text-left py-16;
+}
+
+.welcome__title {
+  @apply flex flex-wrap w-full text-4xl sm:text-6xl;
+
+  color: var(--color-headline);
+}
+
+.welcome__title-word {
+  @apply relative inline-flex mr-4 mb-4;
+
+  overflow: hidden;
+  overflow: clip;
+
+  & > span {
+    transition: transform .3s ease;
+    cursor: pointer;
+
+    &:not(:hover) {
+      transform: translateY(50%);
+    }
+  }
+
+  & > p {
+    @apply absolute whitespace-pre-wrap sm:whitespace-nowrap text-base sm:text-lg italic;
+
+    opacity: 0;
+    top: calc(100% + 1rem);
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--color-text);
+    border-radius: 0.5em;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 0 5px var(--color-border);
+    background-color: var(--color-bg-offset);
+    padding: .5em 1em;
+  }
+
+  &:hover {
+    @apply overflow-visible;
+
+    &> p {
+      opacity: 1;
+      transition: opacity 0.3s linear .2s;
+      z-index: 999;
+    }
+  }
+}
+
+
+.recent-post-list-title {
+  @apply text-2xl sm:text-3xl mb-8 sm:mb-12;
+
+  color: var(--color-headline);
+}
+
+.recent-post-list {
+  @apply relative flex flex-col max-w-screen-md;
+}
+
+.recent-post-item {
+  @apply relative mb-12;
+}
+
+.read-all-post-list {
+  @apply inline-flex text-lg mb-16 border-b-primary self-start;
+
+  color: var(--color-headline);
+  border-bottom-color: var(--color-border);
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+/* The typing effect */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}

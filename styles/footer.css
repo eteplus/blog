@@ -1,0 +1,44 @@
+.footer {
+  @apply relative px-6 py-4 sm:py-8 sm:px-12 text-base;
+  @apply flex flex-wrap flex-col border-t border-solid;
+
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+.footer__icons {
+  @apply flex items-center justify-center mb-4;
+
+  a {
+    @apply inline-flex items-center justify-center;
+    @apply w-[36px] h-[36px] rounded-[50%] mx-2;
+    
+    color: var(--color-headline);
+  }
+
+  a:hover {
+    background-color: var(--color-border);
+  }
+  
+  svg {
+    @apply inline-block;
+  }
+}
+
+.footer__licence {
+  @apply flex items-center justify-center flex-wrap;
+
+  span {
+    @apply mr-2 border-b-[2px] border-b-transparent;
+  }
+
+  a {
+    @apply inline-block border-b-primary;
+
+    border-bottom-color: var(--color-border);
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+}

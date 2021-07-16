@@ -1,5 +1,5 @@
 .post {
-  @apply relative;
+  @apply relative xl:-mx-8;
 }
 
 .post__header {
@@ -7,11 +7,15 @@
 }
 
 .post__title {
-  @apply text-theme-headline text-4xl sm:text-6xl mb-6;
+  @apply text-2xl sm:text-4xl mb-6;
+
+  color: var(--color-headline);
 }
 
 .post__meta {
-  @apply flex items-center sm:justify-center text-base sm:text-lg text-theme-text-offset;
+  @apply flex items-center sm:justify-center text-base sm:text-lg;
+
+  color: var(--color-text-offset);
 }
 
 .post__hero {
@@ -25,7 +29,7 @@
 }
 
 .post__content {
-  @apply font-mono w-full max-w-screen-md mx-auto text-base sm:text-lg mb-4;
+  @apply w-full max-w-screen-md mx-auto text-base sm:text-lg mb-4;
 }
 
 .post__content > * {
@@ -33,7 +37,6 @@
 }
 
 /* link */
-
 .post__content a {
   @apply relative inline-block;
   @apply text-theme-primary hover:underline active:underline;
@@ -46,43 +49,41 @@
 }
 
 /* sup, sub */
-
-.post__content sup, .post__content sub {
-  font-size: .8em;
+.post__content sup,
+.post__content sub {
+  font-size: 0.8em;
 }
 
-.post__content sup a, .post__content sub a {
+.post__content sup a,
+.post__content sub a {
   border-bottom: none;
 }
 
 /* mark */
-
 .post__content mark {
   @apply text-theme-text bg-theme-bg-offset;
 
   padding: 2px 4px;
 }
 
-
 /* divider */
-
 .post__content hr {
   text-align: center;
   height: 2px;
   margin: 2rem auto;
   border: 0 solid var(--color-border);
-  background-color: var(--color-border)
+  background-color: var(--color-border);
 }
 
 /* blockquote */
-
 .post__content blockquote {
-  @apply text-lg italic;
+  @apply italic;
 
   quotes: '“' '”' '‘' '’';
+  background: var(--color-bg-offset);
   border-left: 0.25em solid var(--color-secondary);
   line-height: 2;
-  padding: 0.25em 1em;
+  padding: 1em;
 }
 
 .post__content blockquote > :first-child {
@@ -94,7 +95,6 @@
 }
 
 /* title */
-
 .post__content h1,
 .post__content h2,
 .post__content h3,
@@ -110,7 +110,7 @@
     @apply absolute text-theme-primary opacity-0;
 
     content: '#';
-    left: -.8em;
+    left: -0.8em;
     font-size: 1.2em;
   }
 
@@ -133,31 +133,30 @@
 }
 
 .post__content h1 {
-  @apply text-3xl sm:text-4xl;
+  @apply text-2xl sm:text-4xl;
 }
 
 .post__content h2 {
-  @apply text-2xl sm:text-3xl;
-}
-
-.post__content h3 {
   @apply text-xl sm:text-2xl;
 }
 
-.post__content h4 {
+.post__content h3 {
   @apply text-lg sm:text-xl;
 }
 
-.post__content h5 {
+.post__content h4 {
   @apply text-base sm:text-lg;
 }
 
-.post__content h6 {
+.post__content h5 {
   @apply text-sm sm:text-base;
 }
 
-/* list */
+.post__content h6 {
+  @apply text-xs sm:text-sm;
+}
 
+/* list */
 .post__content ul,
 .post__content ol {
   @apply list-outside;
@@ -186,12 +185,12 @@
   list-style-type: circle;
 }
 
-.post__content ol li:not(:last-child), .post__content ul li:not(:last-child) {
-  margin-bottom: .25em;
+.post__content ol li:not(:last-child),
+.post__content ul li:not(:last-child) {
+  margin-bottom: 0.25em;
 }
 
 /* table */
-
 .post__content dl {
   @apply p-0;
 }
@@ -230,28 +229,27 @@
 }
 
 /* image */
-
-.post__content img, .post__content video {
+.post__content img,
+.post__content video {
   @apply block max-w-full h-auto mx-auto box-content text-center;
 }
 
-.post__content img[align="right"] {
+.post__content img[align='right'] {
   @apply pl-6;
 }
 
-.post__content img[align="left"] {
+.post__content img[align='left'] {
   @apply pr-6;
 }
 
 .post__img {
-  @apply lg:-mx-12;
+  @apply lg:-mx-20;
 }
 
 /* code */
-
 .post__content pre {
   @apply block overflow-x-auto whitespace-pre;
-  @apply font-mono text-base text-left p-8 sm:p-12;
+  @apply text-base text-left p-8 sm:p-12;
 
   direction: ltr;
   hyphens: none;
@@ -269,12 +267,12 @@
   tab-size: 4;
 }
 
-.post__content :not(pre)>code {
-  @apply inline-block mx-1 bg-theme-bg-offset border border-solid border-theme-border font-mono;
+.post__content :not(pre) > code {
+  @apply inline-block mx-1 bg-theme-bg-offset border border-solid border-theme-border ;
 
   padding: 2px 4px;
   border-radius: 4px;
-  font-size: .8em;
+  font-size: 0.8em;
 }
 
 .post__content .footnote-reference a {

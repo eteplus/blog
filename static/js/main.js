@@ -20,6 +20,9 @@
 
   function setTheme() {
     document.documentElement.setAttribute('data-theme', theme);
+    var title = 'Activate ' + (theme === 'light' ? 'dark' : 'light') + ' mode';
+    toggleBtn.setAttribute('aria-label', title);
+    toggleBtn.setAttribute('title', title);
     if (hasLocalStorage) {
       window.localStorage.setItem(THEME_CACHE_KEY, theme);
     }

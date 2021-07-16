@@ -1,7 +1,15 @@
-@import "tailwind.css";
 @import "theme.css";
+@import "tailwind.css";
+@import "font-noto-serif.css";
 @import "header.css";
+@import "footer.css";
+@import "posts.css";
+@import "home.css";
+@import "archives.css";
+@import "tags.css";
 @import "post.css";
+@import "404.css";
+@import "about.css";
 
 @layer base {
   h1, h2, h3 {
@@ -9,12 +17,13 @@
   }
 
   body {
-    @apply font-serif;
+    @apply relative w-full h-full flex flex-col overflow-x-hidden min-h-screen;
 
-    transition: color .2s, background-color .2s;
+    font-family: "Noto Serif", sans-serif, Georgia, Cambria, "Times New Roman", Times;
     color: var(--color-text);
     background-color: var(--color-bg);
     -webkit-text-size-adjust: 100%;
+    transition: color .2s, background-color .2s;
   }
 
   ::selection {
@@ -22,7 +31,17 @@
     color: #fff;
   }
 
+  main {
+    @apply relative w-full flex flex-1 flex-col max-w-screen-lg mx-auto px-8;
+  }
+
   main img {
     content-visibility: auto;
+  }
+
+  .title {
+    @apply text-2xl sm:text-4xl text-left sm:text-center py-12 sm:py-16;
+  
+    color: var(--color-headline);
   }
 }

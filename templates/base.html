@@ -12,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="format-detection" content="telephone=no">
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0, user-scalable=no,viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, shrink-to-fit=no">
 
     {% block favicons %}
       {{ macros_head::favicons(emoji="👻") }}
@@ -42,12 +42,12 @@
     </script>
   </head>
 
-  <body class="relative w-full h-full flex flex-col overflow-x-hidden min-h-screen">
+  <body>
     {% block header %}
       {{ macros_header::render(current_section=current_path | default(value="/")) }}
     {% endblock header %}
 
-    <main class="relative w-full flex flex-1 flex-col max-w-screen-lg mx-auto px-8 lg:px-0" role="main">
+    <main role="main">
       {% block content %}{% endblock content %}
     </main>
 
