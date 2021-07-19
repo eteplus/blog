@@ -3,7 +3,11 @@
 }
 
 .tag {
-  @apply relative inline-block mb-6 mr-12 text-xl border-b-primary;
+  @apply relative inline-block mb-6 text-xl border-b-primary;
+
+  &:not(:last-child) {
+    @apply mr-12;
+  }
 
   span {
     color: var(--color-text);

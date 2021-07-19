@@ -41,7 +41,6 @@
           <span class="mx-2">•</span>
           <span>{{ page.reading_time }} min read</span>
         {% endif %}
-        
       </div>
     </div>
 
@@ -49,35 +48,31 @@
       <div class="post__hero" style="background-image: url({{ get_url(path=page.extra.hero) }});"></div>
     {% endif %}
 
-    {% if page.description %}
-      <p class="post__descripiton">{{ page.description }}</p>
-    {% endif %}
-
     <div class="post__content">
       {{ page.content | safe }}
     </div>
-    <div class="max-w-screen-md mx-auto border-b border-solid border-theme-border text-base sm:text-lg text-theme-text-offset py-4 mb-4">
+    <div class="post__tags">
       {% if page.taxonomies.tags %}
         {% for tag in page.taxonomies.tags %}
           <a
             href="{{ get_taxonomy_url(kind='tags', name=tag) }}"
-            class="lowercase hover:text-theme-primary hover:underline mr-4"
+            class="post__tag"
             alt="{{ tag }}"
           >#{{ tag }}</a>
         {% endfor %}
       {% endif %}
     </div>
-    <div class="flex justify-between max-w-screen-md mx-auto mb-16">
+    <div class="post__related">
       {% if page.later %}
-        <div class="flex-1 text-left">
-          <p class="w-full">Previous</p>
-          <a class="inline-block w-auto text-theme-primary hover:text-theme-primary hover:underline" href="{{ page.later.permalink }}">«&nbsp;{{ page.later.title }}</a>
+        <div class="post__later">
+          <span>Previous</span>
+          <a href="{{ page.later.permalink }}" alt="{{ page.later.title }}">«&nbsp;{{ page.later.title }}</a>
         </div>
       {% endif %}
       {% if page.earlier %}
-        <div class="flex-1 text-right">
-          <p class="w-full">Next</p>
-          <a class="inline-block text-theme-primary hover:text-theme-primary hover:underline" href="{{ page.earlier.permalink }}">{{ page.earlier.title }}&nbsp;»</a>
+        <div class="post__earlier">
+          <span>Next</span>
+          <a href="{{ page.earlier.permalink }}" alt="{{ page.earlier.title }}">{{ page.earlier.title }}&nbsp;»</a>
         </div>
       {% endif %}
     </div>

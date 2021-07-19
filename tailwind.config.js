@@ -43,6 +43,14 @@ module.exports = {
             borderColor: 'var(--color-primary)'
           }
         },
+        '.shadow-b-primary': {
+          'transition': 'box-shadow 400ms ease 0s',
+          'box-shadow': '0px 0px 0px var(--color-primary)',
+          '&:hover': {
+            'transition': 'box-shadow 100ms ease 0s',
+            'box-shadow': '0px 2px 0px var(--color-primary)',
+          }
+        }
       });
     }),
   ],

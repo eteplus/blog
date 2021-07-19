@@ -32,8 +32,7 @@
     transform: translateX(-50%);
     color: var(--color-text);
     border-radius: 0.5em;
-    border: 1px solid var(--color-border);
-    box-shadow: 0 0 5px var(--color-border);
+    box-shadow: 0 0 8px var(--color-bg-offset);
     background-color: var(--color-bg-offset);
     padding: .5em 1em;
   }

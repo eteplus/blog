@@ -11,7 +11,7 @@
 
   color: var(--color-headline);
 
-  /* background-image: linear-gradient(transparent 0%, transparent calc(50% - 12px), var(--color-bg-offset) 90%, var(--color-bg-offset) 100%); */
+  background-image: linear-gradient(transparent 0%, transparent calc(50% - 12px), var(--color-bg-offset) 90%, var(--color-bg-offset) 100%);
 }
 
 .about__link {

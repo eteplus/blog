@@ -12,7 +12,7 @@
             <span class="archive-item__date">{{ post.date | date(format='%b %d') }}</span>
             {# title #}
             <a class="archive-item__title" href="{{ post.permalink }}" alt="{{ post.title }}" rel="bookmark">
-              <h2>{{ post.title }}</h2>
+              {{ post.title }}
             </a>
           </li>
         {% endfor %}

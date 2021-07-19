@@ -58,6 +58,7 @@
 .paginator__prev, .paginator__next {
   @apply border-b-primary;
 
+  color: var(--color-headline);
   border-bottom-color: var(--color-border);
 
   &:hover {

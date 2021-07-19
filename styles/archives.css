@@ -23,7 +23,7 @@
 }
 
 .archive-item__title {
-  @apply inline-block border-b-primary hover:text-[color:var(--color-primary)];
+  @apply font-medium inline-block border-b-primary hover:text-[color:var(--color-primary)];
   
   color: var(--color-headline);
 }
