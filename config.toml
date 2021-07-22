@@ -54,6 +54,8 @@ menus = [
   { name = "About", url = "/about" }
 ]
 
+google_analytics_token = "G-9GEVV08W03"
+
 [extra.seo]
 image =""
 audio = ""

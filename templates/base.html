@@ -34,6 +34,8 @@
       {% endif %}
     {% endblock seo %}
 
+    {{ macros_head::google_analytics() }}
+
     <script>
       if (window.localStorage) {
         var theme = window.localStorage.getItem('theme');
