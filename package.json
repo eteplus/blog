@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eteplus/eteplus.com.git"
+    "url": "git+https://github.com/eteplus/blog.git"
   },
   "keywords": [
     "blog",
@@ -21,9 +21,9 @@
   "author": "eteplus",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/eteplus/eteplus.com/issues"
+    "url": "https://github.com/eteplus/blog/issues"
   },
-  "homepage": "https://github.com/eteplus/eteplus.com#readme",
+  "homepage": "https://github.com/eteplus/blog#readme",
   "devDependencies": {
     "@tailwindcss/line-clamp": "^0.2.1",
     "autoprefixer": "^10.3.1",

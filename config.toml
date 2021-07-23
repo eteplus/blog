@@ -4,9 +4,6 @@ base_url = "https://eteplus.com"
 
 minify_html = false
 
-# Whether to build a search index to be used later on by a JavaScript library
-# When set to "true", a search index is built from the pages and section
-# content for `default_language`.
 build_search_index = false
 
 generate_feed = true
