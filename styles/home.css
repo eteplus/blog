@@ -1,9 +1,9 @@
 .welcome {
-  @apply relative text-left py-16;
+  @apply relative w-full text-left py-16;
 }
 
 .welcome__title {
-  @apply flex flex-wrap w-full text-4xl sm:text-6xl;
+  @apply inline-flex flex-wrap text-4xl sm:text-6xl;
 
   color: var(--color-headline);
 }
@@ -71,15 +71,5 @@
 
   &:hover {
     color: var(--color-primary);
-  }
-}
-
-/* The typing effect */
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
   }
 }

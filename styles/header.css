@@ -10,10 +10,14 @@ header {
 }
 
 .navbar__author {
-  @apply flex items-center text-xl py-4;
+  @apply relative flex items-center text-xl py-4;
 
   a {
-    @apply inline-block font-semibold cursor-pointer;
+    @apply flex items-center font-semibold cursor-pointer;
+
+    &:hover {
+      color: var(--color-primary);
+    }
   }
 }
 

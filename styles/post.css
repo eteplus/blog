@@ -79,15 +79,70 @@
   @apply w-full max-w-screen-md mx-auto text-base sm:text-lg mb-4;
 }
 
+.post__toc {
+  @apply max-w-screen-md mx-auto text-base sm:text-lg mb-4;
+}
+
+.post__toc h2 {
+  @apply relative cursor-pointer text-xl sm:text-2xl;
+
+  color: var(--color-headline);
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
+
+.post__toc a {
+  @apply relative inline-block shadow-b-primary;
+    
+  &:hover {    
+    color: var(--color-primary);
+  }
+
+  &:active {
+    color: var(--color-primary);
+  }
+}
+
+
+.post__toc ul {
+  @apply list-outside list-disc;
+  
+  padding-left: 1.25em;
+}
+
+.post__toc ul ul {
+  @apply my-0;
+
+  list-style-type: circle;
+}
+
+.post__toc li ul {
+  list-style-type: circle;
+}
+
+.post__toc li ul li ul {
+  list-style-type: square;
+}
+
+.post__toc ul li:not(:last-child) {
+  margin-bottom: 0.2em;
+}
+
 .post__content > * {
   @apply mb-8;
 }
 
 /* link */
-.post__content a {
+.post__content a:not(.post__anchor) {
   @apply relative inline-block shadow-b-primary;
   
   color: var(--color-primary);
+}
+
+.post__anchor {
+  @apply absolute opacity-0;
+
+  left: -1.1em;
 }
 
 .post__content a:not([href]) {
@@ -147,7 +202,7 @@
 .post__content h4,
 .post__content h5,
 .post__content h6 {
-  @apply relative;
+  @apply relative cursor-pointer;
 
   color: var(--color-headline);
   margin-top: 2em;
@@ -156,17 +211,9 @@
 
 .post__content h1,
 .post__content h2,
-.post__content h3 {
-
-  &:before {
-    @apply absolute opacity-0;
-
-    content: '#';
-    color: var(--color-primary);
-    left: -0.8em;
-  }
-
-  &:hover:before {
+.post__content h3,
+.post__content h4 {
+  &:hover .post__anchor {
     @apply opacity-100;
   }
 }

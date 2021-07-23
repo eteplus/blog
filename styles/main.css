@@ -16,6 +16,10 @@
     @apply font-medium;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply relative w-full h-full flex flex-col overflow-x-hidden min-h-screen;
 
@@ -40,8 +44,10 @@
   }
 
   .title {
-    @apply text-2xl sm:text-4xl text-left sm:text-center py-12 sm:py-16;
+    @apply inline-flex text-2xl sm:text-4xl text-left sm:text-center my-12 sm:my-16 ml-0 mr-auto sm:mx-auto;
   
     color: var(--color-headline);
+
+    background-image: linear-gradient(transparent 0%, transparent calc(50% - 12px), var(--color-bg-offset) 90%, var(--color-bg-offset) 100%);
   }
 }

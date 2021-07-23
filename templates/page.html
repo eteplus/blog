@@ -48,6 +48,37 @@
       <div class="post__hero" style="background-image: url({{ get_url(path=page.extra.hero) }});"></div>
     {% endif %}
 
+    {# <div class="post__toc">
+      <h2>目录</h2>
+      {% if page.toc %}
+        <ul>
+        {% for h1 in page.toc %}
+          <li>
+            <a href="{{ h1.permalink | safe }}">{{ h1.title }}</a>
+            {% if h1.children %}
+              <ul>
+                {% for h2 in h1.children %}
+                <li>
+                  <a href="{{ h2.permalink | safe }}">{{ h2.title }}</a>
+                  {% if h2.children %}
+                  <ul>
+                    {% for h3 in h2.children %}
+                    <li>
+                      <a href="{{ h3.permalink | safe }}">{{ h3.title }}</a>
+                    </li>
+                    {% endfor %}
+                  </ul>
+                  {% endif %}
+                </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    </div> #}
+
     <div class="post__content">
       {{ page.content | safe }}
     </div>
