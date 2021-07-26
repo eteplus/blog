@@ -6,7 +6,7 @@
   "scripts": {
     "serve": "zola serve --interface 0.0.0.0 --port 8088 & npm run watch:css",
     "watch:css": "postcss styles/main.css -o static/css/main.css -w",
-    "build": "npm run build:css && zola build --output-dir dist",
+    "build": "npm run build:css && zola build --output-dir www",
     "build:css": "postcss styles/main.css -o static/css/main.css --env production"
   },
   "repository": {
