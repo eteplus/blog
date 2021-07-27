@@ -44,7 +44,7 @@
   --color-secondary: #2cb67d;
 }
 
-/*! tailwindcss v2.2.6 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v2.2.7 | MIT License | https://tailwindcss.com */
 
 /*! modern-normalize v1.1.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
 
@@ -604,7 +604,7 @@ video {
   display: none;
 }
 
-.footer, span, .post__tags, th, td {
+*, ::before, ::after {
   --tw-border-opacity: 1;
   border-color: rgba(229, 231, 235, var(--tw-border-opacity));
 }
