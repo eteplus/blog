@@ -15,7 +15,7 @@
 }
 
 .post-item__inner {
-  @apply relative w-full flex flex-2 flex-col items-start text-base;
+  @apply relative w-full flex flex-2 flex-col items-start text-sm;
 }
 
 .post-item__title {
@@ -30,7 +30,7 @@
 
 .post-item__meta {
   @apply flex justify-start items-center flex-wrap mb-4;
-  
+
   color: var(--color-text-offset);
 }
 
@@ -48,6 +48,11 @@
   color: var(--color-text);
 }
 
+[data-theme="light"] {
+  .post-item__summary, .post-item__description {
+    opacity: 0.8;
+  }  
+}
 
 .paginator {
   @apply text-lg pb-8;

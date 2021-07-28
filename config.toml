@@ -1,6 +1,5 @@
 title = "ETEPLUS"
 description = "ETEPLUS is a front-end web developer. 👻"
-# The URL the site will be built for
 base_url = "https://eteplus.com"
 
 minify_html = false

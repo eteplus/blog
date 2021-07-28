@@ -3,16 +3,30 @@
 }
 
 .welcome__title {
-  @apply inline-flex flex-wrap text-4xl sm:text-6xl;
+  @apply relative inline-flex flex-wrap text-4xl sm:text-6xl;
 
   color: var(--color-headline);
+
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: calc(1rem - 4px);
+    height: 2px;
+    left: -8px;
+    right: -8px;
+    background-color: var(--color-border);
+  }
 }
 
 .welcome__title-word {
-  @apply relative inline-flex mr-4 mb-4;
+  @apply relative inline-flex mb-4;
 
   overflow: hidden;
   overflow: clip;
+
+  &:not(:last-child) {
+    @apply mr-4;
+  }
 
   & > span {
     transition: transform .3s ease;
@@ -40,7 +54,7 @@
   &:hover {
     @apply overflow-visible;
 
-    &> p {
+    & > p {
       opacity: 1;
       transition: opacity 0.3s linear .2s;
       z-index: 999;
