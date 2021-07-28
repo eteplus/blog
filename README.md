@@ -1,11 +1,17 @@
-# Just a blog (https://eteplus.com)
+# Just a blog
 
-> A blog powered by [Zola](https://www.getzola.org/documentation/getting-started/installation/) and [Tailwindcss](https://tailwindcss.com/)
+> A [blog](https://eteplus.com) powered by [Zola](https://www.getzola.org/documentation/getting-started/installation/) and [Tailwindcss](https://tailwindcss.com/)
+
+## Preview
+<center>
+  <img src="./preview.jpg" style="width: 60%;" alt="preview">
+  <img src="./lighthouse.jpg" style="width: 60%;" alt="lighthouse">
+</center>
 
 ## Requirements
 
-1. [node](https://pnpm.io/installation) >= 16.2.0
-2. [zola](https://www.getzola.org/documentation/getting-started/installation/)
+- [node](https://pnpm.io/installation) >= 16.2.0
+- [zola](https://www.getzola.org/documentation/getting-started/installation/)
 
 ## Project setup
 
