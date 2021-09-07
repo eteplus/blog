@@ -2,6 +2,7 @@
 node_modules
 public
 dist
+www
 static/css/main.css
 
 # Log files

@@ -122,7 +122,7 @@ hero = "images/unit-test-practice/jest.png"
 
 - `tsconfig.json`
 
-  ```ts x
+  ```tsx
   {
     "compilerOptions": {
       "rootDir": ".",
