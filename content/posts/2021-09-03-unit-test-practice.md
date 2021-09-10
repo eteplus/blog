@@ -3,7 +3,7 @@ title = "单元测试实践"
 description = "基于 Jest 的单元测试实践"
 slug = "unit-test-practice"
 date = 2021-09-03
-updated = 2021-09-03
+updated = 2021-09-10
 
 [taxonomies]
 tags = ["jest", "testing", "typescript"]
@@ -914,112 +914,114 @@ test('mock api function', () => {
 
 ### 10. 测试异步函数
 
-```tsx
-/**
- * 模拟 JSBridge.invoke 通过回调返回结果
- * @param response 返回值
- * @param options 选项
- */
-export function mockInvokeResponse(response: AnyObject, options: { delay?: number } = {}) {
-  const { delay = 0 } = options;
+* `mockInvokeResponse`
 
-  const invoke: JSBridge['invoke'] = jest.fn((_apiName, _params, callback) => {
-    if (delay > 0) {
-      setTimeout(() => callback?.(response), delay);
-      return;
+    ```tsx
+    /**
+    * 模拟 JSBridge.invoke 通过回调返回结果
+    * @param response 返回值
+    * @param options 选项
+    */
+    export function mockInvokeResponse(response: AnyObject, options: { delay?: number } = {}) {
+      const { delay = 0 } = options;
+
+      const invoke: JSBridge['invoke'] = jest.fn((_apiName, _params, callback) => {
+        if (delay > 0) {
+          setTimeout(() => callback?.(response), delay);
+          return;
+        }
+        callback?.(response);
+      });
+
+      Object.defineProperty(window, 'JSBridge', {
+        writable: true,
+        value: {
+          invoke,
+        },
+      });
     }
-    callback?.(response);
-  });
-
-  Object.defineProperty(window, 'JSBridge', {
-    writable: true,
-    value: {
-      invoke,
-    },
-  });
-}
-```
+    ```
 
 1. 使用 `done`
 
-```tsx
-test('The onJSBridgeReady event is triggered', (done) => {
-  const bridge = new AppJSBridge();
-  expect.assertions(1);
-  bridge.invoke('getAppInfo').then((res) => {
-    expect(res).toEqual({
-      errCode: -403,
-      errMsg: 'JSBridge 在非 APP 环境下，不支持调用 JSAPI',
-      result: null,
+    ```tsx
+    test('The onJSBridgeReady event is triggered', (done) => {
+      const bridge = new AppJSBridge();
+      expect.assertions(1);
+      bridge.invoke('getAppInfo').then((res) => {
+        expect(res).toEqual({
+          errCode: -403,
+          errMsg: 'JSBridge 在非 APP 环境下，不支持调用 JSAPI',
+          result: null,
+        });
+        done();
+      });
+      document.dispatchEvent(new Event('onJSBridgeReady'));
     });
-    done();
-  });
-  document.dispatchEvent(new Event('onJSBridgeReady'));
-});
-```
+    ```
 
 2. 在测试用例直接返回 `promise`
 
-```tsx
-test('JSBridge.invoke return a plain object without "result" field', () => {
-  const response = {
-    element: 'Video',
-    layout: {
-      posX: 0,
-      posY: 0,
-      width: 750,
-      height: 375,
-    },
-  };
-  mockInvokeResponse(response);
-  const bridge = new AppJSBridge();
-  return bridge
-    .invoke('getNativeElementLayout', { element: 'Video' }, { timeout: 1500 })
-    .then((res) => {
-      expect(window.JSBridge?.invoke).toHaveBeenCalled();
-      expect(res).toEqual(response);
-    })
-    .catch((err) => {
-      expect(err).toEqual(new Error('timeout'));
+    ```tsx
+    test('JSBridge.invoke return a plain object without "result" field', () => {
+      const response = {
+        element: 'Video',
+        layout: {
+          posX: 0,
+          posY: 0,
+          width: 750,
+          height: 375,
+        },
+      };
+      mockInvokeResponse(response);
+      const bridge = new AppJSBridge();
+      return bridge
+        .invoke('getNativeElementLayout', { element: 'Video' }, { timeout: 1500 })
+        .then((res) => {
+          expect(window.JSBridge?.invoke).toHaveBeenCalled();
+          expect(res).toEqual(response);
+        })
+        .catch((err) => {
+          expect(err).toEqual(new Error('timeout'));
+        });
     });
-});
-```
-
-4. 使用 `async` 和 `await`
-
-```tsx
-test('JSBridge.invoke timeout', async () => {
-  mockInvokeResponse('{}', { delay: 2000 });
-  const bridge = new AppJSBridge();
-  const apiName = 'getMainUserInfo';
-  try {
-    await bridge.invoke(apiName, null, { timeout: 1500 });
-  } catch (err) {
-    expect(err).toEqual(new Error(`JSBridge.invoke('${apiName}') 调用超时无响应`));
-  }
-});
-```
+    ```
 
 3. 使用 [.resolves](https://jestjs.io/docs/asynchronous#resolves--rejects) 和 [.rejects](https://jestjs.io/docs/asynchronous#resolves--rejects)
 
-```tsx
-test('the data is peanut butter', () => {
-  return expect(fetchData()).resolves.toBe('peanut butter');
-});
+    ```tsx
+    test('the data is peanut butter', () => {
+      return expect(fetchData()).resolves.toBe('peanut butter');
+    });
 
-test('the fetch fails with an error', () => {
-  return expect(fetchData()).rejects.toMatch('error');
-});
+    test('the fetch fails with an error', () => {
+      return expect(fetchData()).rejects.toMatch('error');
+    });
 
-// 结合 async 和 await 使用
-test('the data is peanut butter', async () => {
-  await expect(fetchData()).resolves.toBe('peanut butter');
-});
+    // 结合 async 和 await 使用
+    test('the data is peanut butter', async () => {
+      await expect(fetchData()).resolves.toBe('peanut butter');
+    });
 
-test('the fetch fails with an error', async () => {
-  await expect(fetchData()).rejects.toMatch('error');
-});
-```
+    test('the fetch fails with an error', async () => {
+      await expect(fetchData()).rejects.toMatch('error');
+    });
+    ```
+
+4. 使用 `async` 和 `await`
+
+    ```tsx
+    test('JSBridge.invoke timeout', async () => {
+      mockInvokeResponse('{}', { delay: 2000 });
+      const bridge = new AppJSBridge();
+      const apiName = 'getMainUserInfo';
+      try {
+        await bridge.invoke(apiName, null, { timeout: 1500 });
+      } catch (err) {
+        expect(err).toEqual(new Error(`JSBridge.invoke('${apiName}') 调用超时无响应`));
+      }
+    });
+    ```
 
 ### 11. 使用模拟计时器
 
